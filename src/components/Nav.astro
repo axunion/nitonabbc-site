@@ -1,0 +1,97 @@
+<nav class="nav">
+  <ul>
+    <li class="nav-li"><a class="nav-a" href="/">教会について</a></li>
+    <li class="nav-li"><a class="nav-a" href="/access">アクセス</a></li>
+    <li class="nav-li"><a class="nav-a" href="/specials">イベント</a></li>
+    <li class="nav-li"><a class="nav-a" href="/faq">よくある質問</a></li>
+    <li class="nav-li"><a class="nav-a" href="/contact">お問い合わせ</a></li>
+  </ul>
+
+  <button class="close-button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+      ><path
+        d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"
+      ></path></svg
+    >
+  </button>
+</nav>
+
+<button class="menu-button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+    ><path d="M2 6H22V8H2V8Z M2 16H22V18H2V14Z"></path></svg
+  >
+</button>
+
+<style>
+  .nav {
+    align-items: center;
+    background: var(--color-background);
+    color: var(--color-text);
+    display: flex;
+    inset: 0;
+    justify-content: center;
+    opacity: 0;
+    overflow-y: scroll;
+    position: fixed;
+    text-align: center;
+    transform: scale(0);
+    transition:
+      opacity 0.4s,
+      transform 0s 0.4s;
+    z-index: 1111;
+  }
+
+  .nav.active {
+    opacity: 1;
+    transform: scale(1);
+    transition:
+      opacity 0s,
+      transform 0s;
+  }
+
+  .nav-li {
+    font-size: 2vw;
+    opacity: 0;
+    transform: translateY(-20px);
+    transition:
+      opacity 0s 0.4s,
+      transform 0s 0.4s;
+  }
+
+  .nav-a {
+    display: inline-block;
+    padding: 20px;
+  }
+
+  .nav.active li {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 0.4s 0.1s,
+      transform 0.4s 0.1s ease-out;
+  }
+
+  .nav .close-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  .nav + .menu-button {
+    position: fixed;
+    right: 10px;
+    top: 10px;
+    transition: opacity 0.4s 0.1s;
+    z-index: 11;
+  }
+
+  .nav.active + .menu-button {
+    opacity: 0;
+  }
+
+  @media (max-width: 768px) {
+    .nav-li {
+      font-size: 100%;
+    }
+  }
+</style>

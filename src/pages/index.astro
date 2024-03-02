@@ -1,50 +1,253 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import Layout from "../layouts/Layout.astro";
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/pages/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<Layout
+  title="仁戸名聖書バプテスト教会"
+  description="仁戸名聖書バプテスト教会は、1963年に創設以来、60年以上にわたり地域の方々にキリストの愛をお伝えしてきた教会です。"
+>
+  <section id="welcome" class="block" data-scroll="theme-light">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+      ><path d="M14 2H10V8H4V12H10V22H14V12H20V8H14V2Z"></path></svg
+    >
+
+    <p>
+      A CHURCH FOR WORSHIPING GOD<br />
+      AND LOVING OTHERS
+    </p>
+  </section>
+
+  <section id="greeting" class="block" data-scroll="theme-blue">
+    <div class="box">
+      <p>
+        仁戸名聖書バプテスト教会は、1963年に創設以来、60年以上にわたり地域の方々にキリストの愛をお伝えしてきました。
+      </p>
+      <p>
+        もし、キリストの愛に触れ、キリストを自分の人生の主として受け入れるなら、誰でも生きがいと希望にあふれた新しい歩みを始めることができると、聖書は教えています。
+      </p>
+      <p>
+        教会での集会や礼拝は、背景や信仰の深さに関係なく、誰でも参加できる場です。気軽にお越しください。
+      </p>
+    </div>
+  </section>
+
+  <section id="worship" class="block" data-scroll="theme-yellow">
+    <div class="box">
+      <h2>礼拝のご案内</h2>
+
+      <table>
+        <tr>
+          <th>日曜礼拝</th>
+          <td>毎週日曜日</td>
+        </tr>
+        <tr>
+          <th>朝礼拝</th>
+          <td>11:00 - 12:30</td>
+        </tr>
+        <tr>
+          <th>夕礼拝</th>
+          <td>14:30 - 15:30</td>
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <th>祈祷会</th>
+          <td>毎週水曜日</td>
+        </tr>
+        <tr>
+          <th>午前の部</th>
+          <td>10:30 - 12:00</td>
+        </tr>
+        <tr>
+          <th>夜間の部</th>
+          <td>19:00 - 20:30</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="pastor">
+    <div class="block" data-scroll="theme-brown">
+      <div class="box">
+        <div class="img-card">
+          <div class="text">
+            <h2>
+              <span class="en">Pastor -</span>
+              <span class="ja">牧師</span>
+            </h2>
+            <h3>
+              <span class="en">Kobayashi Hideo</span><br />
+              <span class="ja">小林秀夫</span>
+            </h3>
+          </div>
+          <div class="img">
+            <img src="img/pastor.jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="introduction">
+          <p>
+            1955年、埼玉県秩父市で誕生。7歳の時に父親の転勤で千葉に転居し、以来現在まで千葉に在住。13歳の時に教会に通うようになり、その頃から将来牧師になる事を目指すようになった。
+          </p>
+          <p>
+            24歳の時に、千葉大学理学部在学中に神学校入学を決心し、大学を中退して、日本バプテスト聖書神学校に入学。27歳で卒業後、現在の仁戸名聖書バプテスト教会の牧師に招かれ、現在に至る。
+          </p>
+          <p>趣味は、読書、音楽鑑賞、考古学などの研究。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="block" data-scroll="theme-green">
+      <div class="box">
+        <div class="img-card">
+          <div class="text">
+            <h2>
+              <span class="en">Evangelist -</span>
+              <span class="ja">伝道師</span>
+            </h2>
+            <h3>
+              <span class="en">Kobayashi David</span><br />
+              <span class="ja">小林太秀</span>
+            </h3>
+          </div>
+          <div class="img">
+            <img src="img/evangelist.jpg" alt="" />
+          </div>
+        </div>
+
+        <div class="introduction">
+          <p>
+            1989年千葉市生まれ。2013年仁戸名聖書バプテスト教会アブラハムミッションカレッジ卒業。2014年仁戸名教会伝道師就任。
+          </p>
+          <p>現在は次世代の育成をミニストリーの中心に据えて奉仕している。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  #welcome svg {
+    fill: currentColor;
+    height: 32px;
+  }
+
+  #welcome p {
+    animation: fadeUpIn 4s ease-out;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 18px;
+    margin: 40px 0 0;
+    text-align: center;
+  }
+
+  #greeting {
+    font-size: 2vw;
+  }
+
+  #worship {
+    font-size: 2vw;
+  }
+
+  #worship h2 {
+    font-family: Georgia, "Times New Roman", "Hiragino Mincho Pro", "Yu Mincho",
+      serif;
+    font-size: 150%;
+    letter-spacing: 0.1em;
+    margin: 0;
+    text-align: center;
+  }
+
+  #worship table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 2em auto;
+    max-width: 25em;
+  }
+
+  #worship th {
+    padding: 0.25em 0.5em 0.25em 0.25em;
+    text-align: right;
+  }
+
+  #worship td {
+    padding: 0.25em 0.25em 0.25em 0.5em;
+  }
+
+  #pastor .img-card {
+    position: relative;
+  }
+
+  #pastor .img-card .text {
+    bottom: 0;
+    color: #ffffffdd;
+    font-family: Georgia, "Times New Roman", "Hiragino Mincho Pro", "Yu Mincho",
+      serif;
+    font-size: 1.5vw;
+    left: 0;
+    padding: 1em;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+  }
+
+  #pastor .img-card h2 {
+    font-size: 75%;
+    font-weight: normal;
+    margin: 0;
+  }
+
+  #pastor .img-card h3 {
+    font-size: 100%;
+    font-weight: normal;
+    margin: 0;
+  }
+
+  #pastor .img-card .en {
+    font-size: 200%;
+  }
+
+  #pastor .img-card .ja {
+    font-size: 150%;
+    letter-spacing: 0.1em;
+  }
+
+  #pastor .img-card .img {
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  #pastor .img-card .img > img {
+    filter: brightness(0.75);
+    height: 480px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  #pastor .introduction {
+    font-size: 90%;
+    padding: 1.5em;
+  }
+
+  @media (max-width: 768px) {
+    #welcome svg {
+      height: 24px;
+    }
+
+    #welcome p {
+      font-size: 14px;
+    }
+
+    #greeting {
+      font-size: 100%;
+    }
+
+    #worship {
+      font-size: 120%;
+    }
+
+    #pastor .img-card .text {
+      font-size: 100%;
+    }
+  }
+</style>
