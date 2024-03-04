@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "../styles/themes.css";
 import Header from "../components/Header.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
@@ -50,5 +51,15 @@ const { title } = Astro.props;
     min-height: 100vh;
     min-width: 320px;
     position: relative;
+  }
+
+  .main {
+    font-size: 2vw;
+  }
+
+  @media (max-width: 768px) {
+    .main {
+      font-size: 100%;
+    }
   }
 </style>

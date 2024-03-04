@@ -1,17 +1,18 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ImageCard from "../components/ImageCard.astro";
 ---
 
 <Layout
   title="仁戸名聖書バプテスト教会"
   description="仁戸名聖書バプテスト教会は、1963年に創設以来、60年以上にわたり地域の方々にキリストの愛をお伝えしてきた教会です。"
 >
-  <section id="welcome" class="block" data-scroll="theme-light">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-      ><path d="M14 2H10V8H4V12H10V22H14V12H20V8H14V2Z"></path></svg
-    >
+  <section class="block" data-scroll="theme-light">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+      <path d="M14 2H10V8H4V12H10V22H14V12H20V8H14V2Z"></path>
+    </svg>
 
-    <p>
+    <p class="welcome">
       A CHURCH FOR WORSHIPING GOD<br />
       AND LOVING OTHERS
     </p>
@@ -31,37 +32,37 @@ import Layout from "../layouts/Layout.astro";
     </div>
   </section>
 
-  <section id="worship" class="block" data-scroll="theme-yellow">
+  <section class="block" data-scroll="theme-yellow">
     <div class="box">
-      <h2>礼拝のご案内</h2>
+      <h2 class="h2">礼拝のご案内</h2>
 
-      <table>
+      <table class="table">
         <tr>
-          <th>日曜礼拝</th>
-          <td>毎週日曜日</td>
+          <th class="th">日曜礼拝</th>
+          <td class="td">毎週日曜日</td>
         </tr>
         <tr>
-          <th>朝礼拝</th>
-          <td>11:00 - 12:30</td>
+          <th class="th">朝礼拝</th>
+          <td class="td">11:00 - 12:30</td>
         </tr>
         <tr>
-          <th>夕礼拝</th>
-          <td>14:30 - 15:30</td>
+          <th class="th">夕礼拝</th>
+          <td class="td">14:30 - 15:30</td>
         </tr>
       </table>
 
-      <table>
+      <table class="table">
         <tr>
-          <th>祈祷会</th>
-          <td>毎週水曜日</td>
+          <th class="th">祈祷会</th>
+          <td class="td">毎週水曜日</td>
         </tr>
         <tr>
-          <th>午前の部</th>
-          <td>10:30 - 12:00</td>
+          <th class="th">午前の部</th>
+          <td class="td">10:30 - 12:00</td>
         </tr>
         <tr>
-          <th>夜間の部</th>
-          <td>19:00 - 20:30</td>
+          <th class="th">夜間の部</th>
+          <td class="td">19:00 - 20:30</td>
         </tr>
       </table>
     </div>
@@ -70,21 +71,11 @@ import Layout from "../layouts/Layout.astro";
   <section id="pastor">
     <div class="block" data-scroll="theme-brown">
       <div class="box">
-        <div class="img-card">
-          <div class="text">
-            <h2>
-              <span class="en">Pastor -</span>
-              <span class="ja">牧師</span>
-            </h2>
-            <h3>
-              <span class="en">Kobayashi Hideo</span><br />
-              <span class="ja">小林秀夫</span>
-            </h3>
-          </div>
-          <div class="img">
-            <img src="img/pastor.jpg" alt="" />
-          </div>
-        </div>
+        <ImageCard
+          title={{ en: "Pastor", ja: "牧師" }}
+          name={{ en: "Kobayashi Hideo", ja: "小林秀夫" }}
+          src="/img/pastor.jpg"
+        />
 
         <div class="introduction">
           <p>
@@ -100,21 +91,11 @@ import Layout from "../layouts/Layout.astro";
 
     <div class="block" data-scroll="theme-green">
       <div class="box">
-        <div class="img-card">
-          <div class="text">
-            <h2>
-              <span class="en">Evangelist -</span>
-              <span class="ja">伝道師</span>
-            </h2>
-            <h3>
-              <span class="en">Kobayashi David</span><br />
-              <span class="ja">小林太秀</span>
-            </h3>
-          </div>
-          <div class="img">
-            <img src="img/evangelist.jpg" alt="" />
-          </div>
-        </div>
+        <ImageCard
+          title={{ en: "Evangelist", ja: "伝道師" }}
+          name={{ en: "Kobayashi David", ja: "小林太秀" }}
+          src="/img/evangelist.jpg"
+        />
 
         <div class="introduction">
           <p>
@@ -128,12 +109,12 @@ import Layout from "../layouts/Layout.astro";
 </Layout>
 
 <style>
-  #welcome svg {
+  .svg {
     fill: currentColor;
     height: 32px;
   }
 
-  #welcome p {
+  .welcome {
     animation: fadeUpIn 4s ease-out;
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 18px;
@@ -141,15 +122,7 @@ import Layout from "../layouts/Layout.astro";
     text-align: center;
   }
 
-  #greeting {
-    font-size: 2vw;
-  }
-
-  #worship {
-    font-size: 2vw;
-  }
-
-  #worship h2 {
+  .h2 {
     font-family: Georgia, "Times New Roman", "Hiragino Mincho Pro", "Yu Mincho",
       serif;
     font-size: 150%;
@@ -158,96 +131,34 @@ import Layout from "../layouts/Layout.astro";
     text-align: center;
   }
 
-  #worship table {
+  .table {
     border-collapse: collapse;
     border-spacing: 0;
     margin: 2em auto;
     max-width: 25em;
   }
 
-  #worship th {
+  .th {
     padding: 0.25em 0.5em 0.25em 0.25em;
     text-align: right;
   }
 
-  #worship td {
+  .td {
     padding: 0.25em 0.25em 0.25em 0.5em;
   }
 
-  #pastor .img-card {
-    position: relative;
-  }
-
-  #pastor .img-card .text {
-    bottom: 0;
-    color: #ffffffdd;
-    font-family: Georgia, "Times New Roman", "Hiragino Mincho Pro", "Yu Mincho",
-      serif;
-    font-size: 1.5vw;
-    left: 0;
-    padding: 1em;
-    position: absolute;
-    right: 0;
-    z-index: 1;
-  }
-
-  #pastor .img-card h2 {
-    font-size: 75%;
-    font-weight: normal;
-    margin: 0;
-  }
-
-  #pastor .img-card h3 {
-    font-size: 100%;
-    font-weight: normal;
-    margin: 0;
-  }
-
-  #pastor .img-card .en {
-    font-size: 200%;
-  }
-
-  #pastor .img-card .ja {
-    font-size: 150%;
-    letter-spacing: 0.1em;
-  }
-
-  #pastor .img-card .img {
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  #pastor .img-card .img > img {
-    filter: brightness(0.75);
-    height: 480px;
-    object-fit: cover;
-    width: 100%;
-  }
-
-  #pastor .introduction {
+  .introduction {
     font-size: 90%;
     padding: 1.5em;
   }
 
   @media (max-width: 768px) {
-    #welcome svg {
+    .svg {
       height: 24px;
     }
 
-    #welcome p {
+    .welcome {
       font-size: 14px;
-    }
-
-    #greeting {
-      font-size: 100%;
-    }
-
-    #worship {
-      font-size: 120%;
-    }
-
-    #pastor .img-card .text {
-      font-size: 100%;
     }
   }
 </style>
