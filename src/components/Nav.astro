@@ -1,3 +1,7 @@
+---
+import Button from "../components/Button.astro";
+---
+
 <nav class="nav">
   <ul>
     <li class="nav-li"><a class="nav-a" href="/">教会について</a></li>
@@ -7,20 +11,23 @@
     <li class="nav-li"><a class="nav-a" href="/contact">お問い合わせ</a></li>
   </ul>
 
-  <button class="close-button">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-      ><path
+  <div class="close">
+    <Button />
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+      <path
         d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"
-      ></path></svg
-    >
-  </button>
+      ></path>
+    </svg>
+  </div>
 </nav>
 
-<button class="menu-button">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-    ><path d="M2 6H22V8H2V8Z M2 16H22V18H2V14Z"></path></svg
-  >
-</button>
+<div class="menu">
+  <Button>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+      <path d="M2 6H22V8H2V8Z M2 16H22V18H2V14Z"></path>
+    </svg>
+  </Button>
+</div>
 
 <style>
   .nav {
@@ -71,22 +78,28 @@
       transform 0.4s 0.1s ease-out;
   }
 
-  .nav .close-button {
+  .close,
+  .menu {
+    font-size: 0;
+    height: 24px;
+    padding: 8px;
     position: absolute;
     right: 10px;
     top: 10px;
+    width: 24px;
   }
 
-  .nav + .menu-button {
-    position: fixed;
-    right: 10px;
-    top: 10px;
+  .menu {
     transition: opacity 0.4s 0.1s;
     z-index: 11;
   }
 
-  .nav.active + .menu-button {
+  .nav.active + .menu {
     opacity: 0;
+  }
+
+  .svg {
+    fill: currentColor;
   }
 
   @media (max-width: 768px) {
