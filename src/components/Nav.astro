@@ -29,6 +29,22 @@ import Button from "../components/Button.astro";
   </Button>
 </div>
 
+<script>
+  const nav = document.querySelector(".nav");
+  const menu = document.querySelector(".menu");
+  const close = nav?.querySelector(".close");
+
+  menu?.addEventListener("click", () => {
+    nav?.classList.add("active");
+    document.body.classList.add("nav-active");
+  });
+
+  close?.addEventListener("click", () => {
+    nav?.classList.remove("active");
+    document.body.classList.remove("nav-active");
+  });
+</script>
+
 <style>
   .nav {
     align-items: center;
@@ -70,7 +86,7 @@ import Button from "../components/Button.astro";
     padding: 20px;
   }
 
-  .nav.active li {
+  .active .nav-li {
     opacity: 1;
     transform: translateY(0);
     transition:
@@ -83,18 +99,22 @@ import Button from "../components/Button.astro";
     font-size: 0;
     height: 24px;
     padding: 8px;
-    position: absolute;
     right: 10px;
     top: 10px;
     width: 24px;
   }
 
+  .close {
+    position: absolute;
+  }
+
   .menu {
+    position: fixed;
     transition: opacity 0.4s 0.1s;
     z-index: 11;
   }
 
-  .nav.active + .menu {
+  .active + .menu {
     opacity: 0;
   }
 
