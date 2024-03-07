@@ -1,0 +1,37 @@
+---
+import { type HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"input">;
+
+const { type, name, value, ...attrs } = Astro.props;
+---
+
+<label class="label">
+  <div class="title">
+    <slot />
+  </div>
+  <input class="input" type={type} name={name} value={value} {...attrs} />
+</label>
+
+<style>
+  .title {
+    padding: 0.5em;
+  }
+
+  .input {
+    border: var(--color-primary) solid 1px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: inherit;
+    display: block;
+    font: inherit;
+    line-height: 1;
+    outline: 0;
+    padding: 1em;
+    width: 100%;
+  }
+
+  .input:focus {
+    border: var(--color-accent) solid 1px;
+  }
+</style>

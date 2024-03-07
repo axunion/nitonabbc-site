@@ -1,6 +1,7 @@
 ---
-interface Props {
-  type?: "button" | "submit" | "reset";
+import { type HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"button"> {
   variant?: "text" | "contained" | "outlined";
 }
 
@@ -35,7 +36,7 @@ const { type = "button", variant = "text" } = Astro.props;
   }
 
   .contained {
-    background: var(--color-primary);
+    background: var(--color-accent);
     border-radius: 4px;
     color: var(--color-background);
     display: inline-block;

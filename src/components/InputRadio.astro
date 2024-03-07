@@ -1,0 +1,41 @@
+---
+import { type HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"input">;
+
+const { name, value, ...attrs } = Astro.props;
+---
+
+<label class="label">
+  <input class="input" type="radio" name={name} value={value} {...attrs} />
+  <div class="item">
+    <slot />
+  </div>
+</label>
+
+<style>
+  .label {
+    cursor: pointer;
+    display: block;
+    margin: 0.5em 0;
+  }
+
+  .input {
+    position: absolute;
+    visibility: hidden;
+  }
+
+  .item {
+    background: var(--color-secondary);
+    border: var(--color-secondary) solid 1px;
+    border-radius: 4px;
+    color: var(--color-primary);
+    padding: 1em 2em;
+  }
+
+  :checked + .item {
+    background: var(--color-background);
+    border-color: var(--color-primary);
+    color: var(--color-text);
+  }
+</style>
