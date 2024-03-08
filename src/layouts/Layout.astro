@@ -1,10 +1,10 @@
 ---
-import "../styles/global.css";
-import "../styles/themes.css";
-import { SITE_URL, SITE_TITLE, SITE_DESCRIPTION } from "../consts";
-import Header from "../components/Header.astro";
-import Nav from "../components/Nav.astro";
-import Footer from "../components/Footer.astro";
+import "@/styles/global.css";
+import "@/styles/themes.css";
+import { SITE_URL, SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+import Header from "@/components/Header.astro";
+import Nav from "@/components/Nav.astro";
+import Footer from "@/components/Footer.astro";
 
 interface Props {
   title?: string;
@@ -65,4 +65,4 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
   }
 </style>
 
-<script src="../scripts/scroll.ts"></script>
+<script src="@/scripts/scroll.ts"></script>
