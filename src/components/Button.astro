@@ -37,6 +37,7 @@ const { type = "button", variant = "text" } = Astro.props;
 
   .contained {
     background: var(--color-accent);
+    border: var(--color-accent) solid 1px;
     border-radius: 4px;
     color: var(--color-background);
     display: inline-block;
@@ -47,11 +48,12 @@ const { type = "button", variant = "text" } = Astro.props;
   }
 
   .contained:hover {
-    background: var(--color-secondary);
+    background: transparent;
+    color: var(--color-accent);
   }
 
   .contained:disabled {
-    background: var(--color-secondary);
+    background: var(--color-subtext);
     color: var(--color-primary);
   }
 
