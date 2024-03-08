@@ -12,12 +12,13 @@ import Button from "../components/Button.astro";
   </ul>
 
   <div class="close">
-    <Button />
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
-      <path
-        d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"
-      ></path>
-    </svg>
+    <Button>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+        <path
+          d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"
+        ></path>
+      </svg>
+    </Button>
   </div>
 </nav>
 
@@ -28,22 +29,6 @@ import Button from "../components/Button.astro";
     </svg>
   </Button>
 </div>
-
-<script>
-  const nav = document.querySelector(".nav");
-  const menu = document.querySelector(".menu");
-  const close = nav?.querySelector(".close");
-
-  menu?.addEventListener("click", () => {
-    nav?.classList.add("active");
-    document.body.classList.add("nav-active");
-  });
-
-  close?.addEventListener("click", () => {
-    nav?.classList.remove("active");
-    document.body.classList.remove("nav-active");
-  });
-</script>
 
 <style>
   .nav {
@@ -128,3 +113,5 @@ import Button from "../components/Button.astro";
     }
   }
 </style>
+
+<script src="../scripts/nav.ts"></script>
