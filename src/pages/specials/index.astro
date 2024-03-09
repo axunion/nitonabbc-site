@@ -1,0 +1,66 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "@/layouts/SpecialsLayout.astro";
+
+const posts = (await getCollection("specials"))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 5);
+---
+
+<Layout>
+  <div class="message">
+    <h2 class="h2">イベントのご案内</h2>
+    <p>
+      初めて教会を訪れる方や、まだ教会に慣れていない方にもご理解いただきやすいように、特別礼拝を定期的に開催しています。
+    </p>
+    <p>また、賛美コンサートや食事会、子供向けの遠足なども行っています。</p>
+  </div>
+
+  <ul class="articles">
+    {
+      posts.map((post) => (
+        <li class="li">
+          <h3 class="h3">{post.data.title}</h3>
+          <a class="a" href={`/specials/${post.slug}/`}>
+            <figure class="image">
+              <img src={post.data.cover.src} alt="" />
+            </figure>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
+
+<style>
+  .message {
+    padding: 1em;
+  }
+
+  .h2 {
+    color: var(--color-accent);
+    font-size: 175%;
+    margin: 1em 0;
+    text-align: center;
+  }
+
+  .articles {
+    margin: 0;
+    padding: 10vh 0;
+  }
+
+  .li {
+    padding: 10vh 0;
+  }
+
+  .h3 {
+    color: var(--color-accent);
+    font-size: 120%;
+    margin: 0 0 1em;
+    text-align: center;
+  }
+
+  .a {
+    display: block;
+  }
+</style>

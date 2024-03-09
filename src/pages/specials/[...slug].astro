@@ -1,0 +1,40 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+import Layout from "@/layouts/SpecialsLayout.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("specials");
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: post,
+  }));
+}
+
+type Props = CollectionEntry<"specials">;
+
+const post = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout {...post.data}>
+  <article>
+    <Content />
+
+    <small class="faq">
+      <a href="/faq">教会に関する一般的な質問と回答はこちらをご覧ください</a>
+    </small>
+  </article>
+</Layout>
+
+<style>
+  .faq {
+    color: var(--color-accent);
+    display: block;
+    font-size: 100%;
+    margin: 25vh 2em 0;
+  }
+
+  .faq::after {
+    content: "💭";
+  }
+</style>
