@@ -2,9 +2,9 @@
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/SpecialsLayout.astro";
 
-const posts = (await getCollection("specials"))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 5);
+const posts = (await getCollection("specials")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 ---
 
 <Layout>

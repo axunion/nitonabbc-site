@@ -12,7 +12,8 @@ interface Props {
   description?: string;
 }
 
-const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+const { title, description = SITE_DESCRIPTION } = Astro.props;
+const pageTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
 ---
 
 <!doctype html>
@@ -21,7 +22,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:type" content="website" />
     <meta
       property="og:image"
@@ -29,9 +30,9 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
     />
     <meta property="og:url" content={SITE_URL} />
     <meta property="og:description" content={description} />
-    <meta property="og:site_name" content={title} />
+    <meta property="og:site_name" content={pageTitle} />
     <link rel="icon" href="/favicon.ico" />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
   </head>
 
   <body>
