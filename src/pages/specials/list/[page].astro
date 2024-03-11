@@ -1,10 +1,17 @@
 ---
+import type { GetStaticPathsOptions } from "astro";
 import { getCollection } from "astro:content";
 import Layout from "@/layouts/SpecialsLayout.astro";
 
-const posts = (await getCollection("specials")).sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+  const posts = (await getCollection("specials")).sort(
+    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+  );
+
+  return paginate(posts, { pageSize: 5 });
+}
+
+const { page } = Astro.props;
 ---
 
 <Layout>
@@ -18,7 +25,7 @@ const posts = (await getCollection("specials")).sort(
 
   <ul class="articles">
     {
-      posts.map((post) => (
+      page.data.map((post) => (
         <li class="li">
           <h3 class="h3">{post.data.title}</h3>
           <a class="a" href={`/specials/${post.slug}/`}>
@@ -30,6 +37,23 @@ const posts = (await getCollection("specials")).sort(
       ))
     }
   </ul>
+
+  <div class="pagination">
+    {
+      page.url.prev ? (
+        <a class="page-link" href={page.url.prev}>
+          ←
+        </a>
+      ) : null
+    }
+    {
+      page.url.next ? (
+        <a class="page-link" href={page.url.next}>
+          →
+        </a>
+      ) : null
+    }
+  </div>
 </Layout>
 
 <style>
@@ -62,5 +86,21 @@ const posts = (await getCollection("specials")).sort(
 
   .a {
     display: block;
+  }
+
+  .pagination {
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+  }
+
+  .page-link {
+    background: var(--color-accent);
+    color: var(--color-background);
+    border-radius: 4px;
+    font-weight: bolder;
+    line-height: 40px;
+    text-align: center;
+    width: 40px;
   }
 </style>
