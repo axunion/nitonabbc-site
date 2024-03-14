@@ -4,6 +4,7 @@ title: "2022 こどもクリスマス会"
 tags:
   - "2022"
   - "christmas"
+  - "kids"
 cover: "./brochure.jpg"
 ---
 

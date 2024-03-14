@@ -4,6 +4,7 @@ title: "2023 こどもクリスマス会"
 tags:
   - "2023"
   - "christmas"
+  - "kids"
 cover: "./brochure.jpg"
 ---
 
