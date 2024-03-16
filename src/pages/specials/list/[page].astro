@@ -5,7 +5,7 @@ import Layout from "@/layouts/SpecialsLayout.astro";
 
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
   const posts = (await getCollection("specials")).sort(
-    (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+    (a: any, b: any) => b.data.date.valueOf() - a.data.date.valueOf()
   );
 
   return paginate(posts, { pageSize: 5 });
@@ -25,7 +25,7 @@ const { page } = Astro.props;
 
   <ul class="articles">
     {
-      page.data.map((post) => (
+      page.data.map((post: any) => (
         <li class="li">
           <h3 class="h3">{post.data.title}</h3>
           <a class="a" href={`/specials/${post.slug}/`}>
