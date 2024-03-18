@@ -39,7 +39,7 @@ iframe {
 }
 
 table {
-  border: var(--color-primary) solid 1px;
+  border: var(--color-accent-complement) solid 1px;
   border-collapse: collapse;
   margin: 2em 0;
   width: 100%;
@@ -50,7 +50,7 @@ table + table {
 }
 
 th {
-  background: var(--color-primary);
+  background: var(--color-accent-complement);
   color: var(--color-background);
   font-weight: bolder;
   letter-spacing: 0.1em;
