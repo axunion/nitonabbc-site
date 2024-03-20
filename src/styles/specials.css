@@ -12,8 +12,9 @@ article h3 {
 }
 
 article img {
+  display: block;
   height: auto;
-  margin: 1em 0;
+  margin: 1em auto;
   width: auto;
 }
 
@@ -41,12 +42,13 @@ iframe {
 table {
   border: var(--color-accent-complement) solid 1px;
   border-collapse: collapse;
-  margin: 2em 0;
+  margin: 2em auto;
+  max-width: 400px;
   width: 100%;
 }
 
 table + table {
-  margin: -2em 0 2em;
+  margin: -2em auto 2em;
 }
 
 th {
