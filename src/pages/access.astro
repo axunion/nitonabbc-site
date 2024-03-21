@@ -5,6 +5,8 @@ import Layout from "@/layouts/Layout.astro";
 <Layout title="アクセス - 仁戸名聖書バプテスト教会">
   <section class="block" data-scroll="theme-light">
     <div class="box">
+      <h2 class="page-title"><b>Access</b><small>アクセス</small></h2>
+
       <figure class="figure">
         <iframe
           class="iframe"
@@ -15,13 +17,11 @@ import Layout from "@/layouts/Layout.astro";
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </figure>
 
-      <div class="address-container">
-        <address class="address">
-          <small class="postcode">260-0801</small><br />
-          千葉市中央区仁戸名町656-15
-          <div class="tel">043-263-3883</div>
-        </address>
-      </div>
+      <address class="address">
+        <small class="postcode">260-0801</small><br />
+        千葉市中央区仁戸名町656-15
+        <div class="tel">043-263-3883</div>
+      </address>
 
       <dl class="dl">
         <dt class="dt">🚈 電車</dt>
@@ -43,8 +43,7 @@ import Layout from "@/layouts/Layout.astro";
   .figure {
     background: #00000010;
     height: 75vh;
-    margin: 0;
-    width: 100%;
+    margin: 0 -1.5em;
   }
 
   .iframe {
@@ -52,19 +51,14 @@ import Layout from "@/layouts/Layout.astro";
     width: 100%;
   }
 
-  .address-container {
-    margin: 1em 0;
-    text-align: right;
-  }
-
   .address {
     border: var(--color-secondary) solid 1px;
     border-radius: 4px;
-    display: inline-block;
     font-size: 1rem;
     font-style: normal;
+    margin: 1em 0;
+    max-width: 360px;
     padding: 1em 2em;
-    text-align: left;
   }
 
   .postcode::before,
@@ -86,7 +80,7 @@ import Layout from "@/layouts/Layout.astro";
 
   .dl {
     border: var(--color-secondary) solid 1px;
-    margin: 2em 0;
+    margin: 2em auto;
   }
 
   .dt {

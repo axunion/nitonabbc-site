@@ -12,6 +12,8 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 }
 
 const { page } = Astro.props;
+const prevUrl = page.url.prev;
+const nextUrl = page.url.next;
 ---
 
 <Layout>
@@ -39,20 +41,8 @@ const { page } = Astro.props;
   </ul>
 
   <div class="pagination">
-    {
-      page.url.prev ? (
-        <a class="page-link" href={page.url.prev}>
-          ←
-        </a>
-      ) : null
-    }
-    {
-      page.url.next ? (
-        <a class="page-link" href={page.url.next}>
-          →
-        </a>
-      ) : null
-    }
+    <a href={prevUrl} class:list={["page-link", { hide: !prevUrl }]}> ← </a>
+    <a href={nextUrl} class:list={["page-link", { hide: !nextUrl }]}> → </a>
   </div>
 </Layout>
 
@@ -70,7 +60,7 @@ const { page } = Astro.props;
 
   .articles {
     margin: 0;
-    padding: 10vh 0;
+    margin: 10vh 0;
   }
 
   .li {
@@ -90,7 +80,8 @@ const { page } = Astro.props;
 
   .pagination {
     display: flex;
-    gap: 1em;
+    gap: 20px;
+    margin: 10vh 0;
     justify-content: center;
   }
 
@@ -101,6 +92,10 @@ const { page } = Astro.props;
     font-weight: bolder;
     line-height: 40px;
     text-align: center;
-    width: 40px;
+    width: 60px;
+  }
+
+  .hide {
+    visibility: hidden;
   }
 </style>
