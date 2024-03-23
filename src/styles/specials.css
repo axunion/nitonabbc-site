@@ -72,7 +72,7 @@ tr:last-of-type td {
 
 blockquote {
   border-radius: 2px;
-  box-shadow: 0 2px 3px 1px var(--color-subtext);
+  box-shadow: 0 0 1px var(--color-primary), 0 2px 4px var(--color-primary);
   margin: 2em 0;
   padding: 0.5em 1em;
 }

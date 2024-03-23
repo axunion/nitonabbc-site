@@ -11,26 +11,29 @@ import Layout from "@/layouts/Layout.astro";
         <iframe
           class="iframe"
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3244.716077978963!2d140.15532577603886!3d35.585399035232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60229af5ddea67e9%3A0x1a3e20fa4268ecd5!2z5LuB5oi45ZCN6IGW5pu444OQ44OX44OG44K544OI5pWZ5Lya!5e0!3m2!1sja!2sjp!4v1695564329751!5m2!1sja!2sjp"
-          style="border: 0"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"></iframe>
       </figure>
 
-      <address class="address">
-        <small class="postcode">260-0801</small><br />
-        千葉市中央区仁戸名町656-15
-        <div class="tel">043-263-3883</div>
-      </address>
+      <div class="address-box">
+        <b class="address-head">仁戸名聖書バプテスト教会</b>
 
-      <dl class="dl">
-        <dt class="dt">🚈 電車</dt>
-        <dd class="dd">京成電鉄 <b>大森台駅</b> より徒歩15分</dd>
-        <dt class="dt">🚌 バス</dt>
-        <dd class="dd">千葉中央バス <b>仁戸名局</b> より徒歩5分</dd>
-        <dt class="dt">🚗 お車</dt>
-        <dd class="dd">駐車場をご利用いただけます</dd>
-      </dl>
+        <address class="address">
+          <small class="postcode">260-0801</small><br />
+          千葉市中央区仁戸名町656-15
+          <div class="tel">043-263-3883</div>
+        </address>
+
+        <dl class="dl">
+          <dt class="dt">鉄道</dt>
+          <dd class="dd">京成電鉄 <b>大森台駅</b> より徒歩15分</dd>
+          <dt class="dt">バス</dt>
+          <dd class="dd">千葉中央バス <b>仁戸名局</b> より徒歩5分</dd>
+          <dt class="dt">お車</dt>
+          <dd class="dd">駐車場をご利用いただけます</dd>
+        </dl>
+      </div>
 
       <p>
         住宅街の奥まった一角に位置しております。対応が可能な場合は無料で送迎させていただいておりますので、お気軽にご相談ください。
@@ -43,22 +46,33 @@ import Layout from "@/layouts/Layout.astro";
   .figure {
     background: #00000010;
     height: 75vh;
-    margin: 0 -1.5em;
+    margin: 0;
   }
 
   .iframe {
+    border: 0;
     height: 100%;
+    outline: 0;
     width: 100%;
   }
 
+  .address-box {
+    border-top: var(--color-primary) solid 3px;
+    box-shadow: var(--color-primary) 0 2px 4px;
+    margin: 10vh 0;
+    padding: 1em;
+  }
+
+  .address-head {
+    border-bottom: var(--color-primary) solid 1px;
+    display: block;
+    padding: 0 0 0.5em;
+    text-align: center;
+  }
+
   .address {
-    border: var(--color-secondary) solid 1px;
-    border-radius: 4px;
-    font-size: 1rem;
     font-style: normal;
-    margin: 1em 0;
-    max-width: 360px;
-    padding: 1em 2em;
+    margin: 1.5em 0.5em;
   }
 
   .postcode::before,
@@ -79,20 +93,21 @@ import Layout from "@/layouts/Layout.astro";
   }
 
   .dl {
-    border: var(--color-secondary) solid 1px;
-    margin: 2em auto;
+    margin: 1.5em 0.5em;
   }
 
   .dt {
-    background: var(--color-secondary);
     font-weight: bolder;
-    letter-spacing: 0.1em;
-    padding: 0.5em 1em;
-    text-shadow: 0 1px var(--color-background);
   }
 
   .dd {
-    margin: 0;
-    padding: 0.5em 1em 1em;
+    margin: 0 0 0.5em 1.5em;
+  }
+
+  @media (max-width: 768px) {
+    .figure {
+      margin-left: -1.5em;
+      margin-right: -1.5em;
+    }
   }
 </style>
