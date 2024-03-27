@@ -41,8 +41,8 @@ const nextUrl = page.url.next;
   </ul>
 
   <div class="pagination">
-    <a href={prevUrl} class:list={["page-link", { hide: !prevUrl }]}> ← </a>
-    <a href={nextUrl} class:list={["page-link", { hide: !nextUrl }]}> → </a>
+    <a href={prevUrl} class:list={["page-link", { hidden: !prevUrl }]}> ← </a>
+    <a href={nextUrl} class:list={["page-link", { hidden: !nextUrl }]}> → </a>
   </div>
 </Layout>
 
@@ -92,10 +92,6 @@ const nextUrl = page.url.next;
     font-weight: bolder;
     line-height: 40px;
     text-align: center;
-    width: 60px;
-  }
-
-  .hide {
-    visibility: hidden;
+    width: 40px;
   }
 </style>
