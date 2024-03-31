@@ -3,12 +3,20 @@ const boxWait = document.querySelector(".wait");
 const boxDone = document.querySelector(".done");
 const boxFail = document.querySelector(".fail");
 
+declare const grecaptcha: {
+  ready(callback: () => void): Promise<void>;
+  execute(siteKey: string, options: { action: string }): Promise<string>;
+};
+
 type PostResponse = {
   result: "done" | "error";
   error: string;
 };
 
 if (boxInput && boxWait && boxDone && boxFail) {
+  const postUrl =
+    "https://script.google.com/macros/s/AKfycbwVrcTOx7j6Joi6ia4Hpe7IDoq_zPIcl-MM-Sd8QFfVGwuTiMtQfD7AmEQ046UYhGxD/exec";
+  const siteKey = "6LemGUgpAAAAAHNy3XuUPkWhP2KZXkp1EfmC5lDh";
   const form = boxInput.querySelector("form");
 
   form?.addEventListener("submit", async (event: Event) => {
@@ -16,19 +24,21 @@ if (boxInput && boxWait && boxDone && boxFail) {
 
     const className = "hidden";
     const formData = new FormData(form);
+    const postData = Object.fromEntries(formData.entries());
 
     window.scrollTo(0, 0);
     boxInput.classList.add(className);
     boxWait.classList.remove(className);
 
-    try {
-      const response = await fetch(
-        "https://script.google.com/macros/s/AKfycbwVrcTOx7j6Joi6ia4Hpe7IDoq_zPIcl-MM-Sd8QFfVGwuTiMtQfD7AmEQ046UYhGxD/exec",
-        {
-          method: "POST",
-          body: JSON.stringify(formData),
-        }
-      );
+    await grecaptcha.ready(async () => {
+      postData.recaptcha = await grecaptcha.execute(siteKey, {
+        action: "submit",
+      });
+
+      const response = await fetch(postUrl, {
+        method: "POST",
+        body: JSON.stringify(postData),
+      });
 
       if (!response.ok) {
         throw new Error("Form submission failed");
@@ -40,12 +50,9 @@ if (boxInput && boxWait && boxDone && boxFail) {
         boxDone.classList.remove(className);
       } else if (responseData.result === "error") {
         boxFail.classList.remove(className);
-        throw new Error(responseData.error);
       }
-    } catch (error) {
+
       boxWait.classList.add(className);
-      boxFail.classList.remove(className);
-      console.error(error);
-    }
+    });
   });
 }

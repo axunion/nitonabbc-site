@@ -13,6 +13,8 @@ import InputRadio from "@/components/InputRadio.astro";
         <h2 class="page-title"><b>Contact</b><small>お問い合わせ</small></h2>
 
         <form class="form">
+          <input type="hidden" name="type" value="000000" />
+
           <div class="item">
             <div class="title">お問い合わせ内容を選択ください</div>
             <InputRadio name="inquiry" value="1" checked>
@@ -105,4 +107,8 @@ import InputRadio from "@/components/InputRadio.astro";
   }
 </style>
 
+<script
+  is:inline
+  src="https://www.google.com/recaptcha/api.js?render=6LemGUgpAAAAAHNy3XuUPkWhP2KZXkp1EfmC5lDh"
+></script>
 <script src="@/scripts/contact.ts"></script>
