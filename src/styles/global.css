@@ -124,6 +124,22 @@ img {
   flex: 0 1 100%;
 }
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
+.recaptcha {
+  color: var(--color-subtext);
+  font-size: small;
+  letter-spacing: 0;
+  line-height: 1.2;
+  margin: 2em 1em;
+}
+
+.recaptcha > a {
+  color: var(--color-accent-complement);
+}
+
 @media (max-width: 768px) {
   .block {
     padding: 80px 1.5em;
@@ -133,44 +149,5 @@ img {
   .box.fix {
     flex-direction: column;
     gap: 20px;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeUpIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-@keyframes plane {
-  0% {
-    transform: translateX(-20vw);
-  }
-  100% {
-    transform: translateX(20vw);
   }
 }
