@@ -3,11 +3,6 @@ const boxWait = document.querySelector(".wait");
 const boxDone = document.querySelector(".done");
 const boxFail = document.querySelector(".fail");
 
-declare const grecaptcha: {
-  ready(callback: () => void): Promise<void>;
-  execute(siteKey: string, options: { action: string }): Promise<string>;
-};
-
 type PostResponse = {
   result: "done" | "error";
   error: string;
