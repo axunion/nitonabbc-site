@@ -25,7 +25,7 @@ if (boxInput && boxWait && boxDone && boxFail) {
     boxInput.classList.add(className);
     boxWait.classList.remove(className);
 
-    await grecaptcha.ready(async () => {
+    grecaptcha.ready(async () => {
       postData.recaptcha = await grecaptcha.execute(siteKey, {
         action: "submit",
       });
