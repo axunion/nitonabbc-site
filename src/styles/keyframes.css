@@ -1,4 +1,4 @@
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0;
   }
@@ -7,7 +7,7 @@
   }
 }
 
-@keyframes fadeUpIn {
+@keyframes fade-up-in {
   from {
     opacity: 0;
     transform: translateY(30px);
@@ -28,7 +28,7 @@
   }
 }
 
-@keyframes plane {
+@keyframes crossing {
   0% {
     transform: translateX(-20vw);
   }
