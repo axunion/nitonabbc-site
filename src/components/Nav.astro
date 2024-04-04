@@ -46,8 +46,8 @@ import Button from "@/components/Button.astro";
     text-align: center;
     transform: scale(0);
     transition:
-      opacity 0.4s,
-      transform 0s 0.4s;
+      opacity 0.5s ease-out,
+      transform 0s 0.5s;
     z-index: 1111;
   }
 
@@ -62,10 +62,10 @@ import Button from "@/components/Button.astro";
   .nav-li {
     font-size: 2vw;
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-10px);
     transition:
-      opacity 0s 0.4s,
-      transform 0s 0.4s;
+      opacity 0.3s,
+      transform 0.3s;
   }
 
   .nav-a {
@@ -77,8 +77,8 @@ import Button from "@/components/Button.astro";
     opacity: 1;
     transform: translateY(0);
     transition:
-      opacity 0.4s 0.1s,
-      transform 0.4s 0.1s ease-out;
+      opacity 0.3s 0.1s,
+      transform 0.3s 0.1s;
   }
 
   .close,
