@@ -17,19 +17,25 @@ import InputRadio from "@/components/InputRadio.astro";
 
           <div class="item">
             <div class="title">お問い合わせ内容を選択ください</div>
-            <InputRadio name="inquiry" value="1" checked>
+            <InputRadio
+              name="inquiry"
+              value="教会の場所や駐車場について"
+              checked
+            >
               教会の場所や駐車場について
             </InputRadio>
-            <InputRadio name="inquiry" value="2">
+
+            <InputRadio name="inquiry" value="礼拝の時間や内容について">
               礼拝の時間や内容について
             </InputRadio>
-            <InputRadio name="inquiry" value="3">その他</InputRadio>
+
+            <InputRadio name="inquiry" value="その他">その他</InputRadio>
           </div>
 
           <div class="item">
             <div class="title">ご希望の返信方法を選択ください</div>
-            <InputRadio name="reply" value="1" checked>メール</InputRadio>
-            <InputRadio name="reply" value="2">電話</InputRadio>
+            <InputRadio name="reply" value="メール" checked>メール</InputRadio>
+            <InputRadio name="reply" value="電話">電話</InputRadio>
           </div>
 
           <div class="item">
