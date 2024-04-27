@@ -18,7 +18,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { rootMargin: "-50% 0px" }
+  { rootMargin: "0px 0px -50%" }
 );
 
 scrollTargets.forEach((target) => {
