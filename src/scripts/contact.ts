@@ -9,9 +9,8 @@ type PostResponse = {
 };
 
 if (boxInput && boxWait && boxDone && boxFail) {
-  const POST_URL =
-    "https://script.google.com/macros/s/AKfycbwVrcTOx7j6Joi6ia4Hpe7IDoq_zPIcl-MM-Sd8QFfVGwuTiMtQfD7AmEQ046UYhGxD/exec";
-  const SITE_KEY = "6LemGUgpAAAAAHNy3XuUPkWhP2KZXkp1EfmC5lDh";
+  const ENDPOINT = import.meta.env.PUBLIC_ENDPOINT;
+  const SITEKEY = import.meta.env.PUBLIC_SITEKEY;
   const CLASS_NAME = "hidden";
   const form = boxInput.querySelector("form");
 
@@ -27,11 +26,11 @@ if (boxInput && boxWait && boxDone && boxFail) {
 
     grecaptcha.ready(async () => {
       postData.type = "000000";
-      postData.recaptcha = await grecaptcha.execute(SITE_KEY, {
+      postData.recaptcha = await grecaptcha.execute(SITEKEY, {
         action: "submit",
       });
 
-      const response = await fetch(POST_URL, {
+      const response = await fetch(ENDPOINT, {
         method: "POST",
         body: JSON.stringify(postData),
       });
