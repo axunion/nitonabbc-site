@@ -1,5 +1,5 @@
 ---
-interface Props {
+type Props = {
   title: {
     en?: string;
     ja?: string;
@@ -9,7 +9,7 @@ interface Props {
     ja?: string;
   };
   src: string;
-}
+};
 
 const { title, name, src } = Astro.props;
 ---

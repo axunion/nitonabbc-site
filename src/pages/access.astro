@@ -1,11 +1,12 @@
 ---
 import Layout from "@/layouts/Layout.astro";
+import Heading from "@/components/Heading.astro";
 ---
 
 <Layout title="アクセス - 仁戸名聖書バプテスト教会">
   <section class="block" data-scroll="theme-light">
     <div class="box">
-      <h2 class="page-title"><b>Access</b><small>アクセス</small></h2>
+      <Heading en="Access" ja="アクセス" />
 
       <figure class="figure">
         <iframe
@@ -46,7 +47,7 @@ import Layout from "@/layouts/Layout.astro";
   .figure {
     background: #00000010;
     height: 75vh;
-    margin: 0;
+    margin: 0 -5vw;
   }
 
   .iframe {
@@ -102,12 +103,5 @@ import Layout from "@/layouts/Layout.astro";
 
   .dd {
     margin: 0 0 0.5em 1.5em;
-  }
-
-  @media (max-width: 768px) {
-    .figure {
-      margin-left: -1.5em;
-      margin-right: -1.5em;
-    }
   }
 </style>

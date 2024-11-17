@@ -2,6 +2,7 @@
 import "@/styles/keyframes.css";
 import Layout from "@/layouts/Layout.astro";
 import Button from "@/components/Button.astro";
+import Heading from "@/components/Heading.astro";
 import Input from "@/components/Input.astro";
 import InputRadio from "@/components/InputRadio.astro";
 ---
@@ -10,7 +11,7 @@ import InputRadio from "@/components/InputRadio.astro";
   <section>
     <div class="block" data-scroll="theme-light">
       <div class="box input">
-        <h2 class="page-title"><b>Contact</b><small>お問い合わせ</small></h2>
+        <Heading en="Contact" ja="お問い合わせ" />
 
         <form class="form">
           <div class="item">
@@ -111,6 +112,10 @@ import InputRadio from "@/components/InputRadio.astro";
     text-align: center;
   }
 
+  .hidden {
+    display: none;
+  }
+
   .svg {
     animation:
       crossing 2s ease-out infinite,
@@ -122,5 +127,17 @@ import InputRadio from "@/components/InputRadio.astro";
   .p {
     display: inline-block;
     text-align: left;
+  }
+
+  .recaptcha {
+    color: var(--color-subtext);
+    font-size: small;
+    letter-spacing: 0;
+    line-height: 1.2;
+    margin: 2em 1em;
+  }
+
+  .recaptcha > a {
+    color: var(--color-accent-complement);
   }
 </style>

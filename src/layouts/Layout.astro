@@ -2,14 +2,14 @@
 import "@/styles/global.css";
 import "@/styles/themes.css";
 import { SITE_URL, SITE_TITLE, SITE_DESCRIPTION } from "@/consts";
+import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import Nav from "@/components/Nav.astro";
-import Footer from "@/components/Footer.astro";
 
-interface Props {
+type Props = {
   title?: string;
   description?: string;
-}
+};
 
 const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
 ---
@@ -63,6 +63,62 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
   @media (max-width: 768px) {
     .main {
       font-size: 100%;
+    }
+  }
+</style>
+
+<style is:global>
+  .grecaptcha-badge {
+    visibility: hidden;
+  }
+
+  .block {
+    align-items: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 10vh 5vw;
+  }
+
+  .block > .box {
+    max-width: 100%;
+    min-width: 60%;
+    width: 800px;
+  }
+
+  .box {
+    position: relative;
+  }
+
+  .box.fill,
+  .box.fix {
+    display: flex;
+    gap: 40px;
+  }
+
+  .box.center {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .box.fill > .cell {
+    flex: auto;
+  }
+
+  .box.fix > .cell {
+    flex: 0 1 100%;
+  }
+
+  @media (max-width: 768px) {
+    .box.fill,
+    .box.fix {
+      flex-direction: column;
+      gap: 20px;
     }
   }
 </style>

@@ -15,8 +15,14 @@
 }
 
 html {
-  font: 100%/1.5 -apple-system, BlinkMacSystemFont, Roboto, Helvetica,
-    "Noto Sans JP", "Yu Gothic", sans-serif;
+  font:
+    100%/1.5 -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    Helvetica,
+    "Noto Sans JP",
+    "Yu Gothic",
+    sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -moz-osx-font-smoothing: grayscale;
@@ -28,7 +34,9 @@ body {
   background: var(--color-background);
   color: var(--color-text);
   margin: 0;
-  transition: background-color 1s, color 1s;
+  transition:
+    background-color 1s,
+    color 1s;
 }
 
 body.nav-active {
@@ -61,93 +69,4 @@ img {
   max-height: 100%;
   max-width: 100%;
   vertical-align: top;
-}
-
-.page-title {
-  margin: 15vh 0 25vh;
-}
-
-.page-title > b {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 150%;
-  font-weight: normal;
-}
-
-.page-title > small {
-  font-weight: normal;
-  margin: 0 0 0 0.5em;
-}
-
-.hidden {
-  display: none;
-}
-
-.block {
-  align-items: center;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-  overflow: hidden;
-  padding: 10vh 40px;
-}
-
-.block > .box {
-  max-width: 100%;
-  min-width: 60%;
-  width: 800px;
-}
-
-.box {
-  position: relative;
-}
-
-.box.fill,
-.box.fix {
-  display: flex;
-  gap: 40px;
-}
-
-.box.center {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.box.fill > .cell {
-  flex: auto;
-}
-
-.box.fix > .cell {
-  flex: 0 1 100%;
-}
-
-.grecaptcha-badge {
-  visibility: hidden;
-}
-
-.recaptcha {
-  color: var(--color-subtext);
-  font-size: small;
-  letter-spacing: 0;
-  line-height: 1.2;
-  margin: 2em 1em;
-}
-
-.recaptcha > a {
-  color: var(--color-accent-complement);
-}
-
-@media (max-width: 768px) {
-  .block {
-    padding: 80px 1.5em;
-  }
-
-  .box.fill,
-  .box.fix {
-    flex-direction: column;
-    gap: 20px;
-  }
 }

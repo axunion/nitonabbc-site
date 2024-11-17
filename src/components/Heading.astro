@@ -1,0 +1,32 @@
+---
+type Props = {
+  en: string;
+  ja: string;
+};
+
+const { en, ja } = Astro.props;
+---
+
+<h2 class="h2">
+  <span class="en">{en}</span>
+  <span>{ja}</span>
+</h2>
+
+<style>
+  .h2 {
+    align-items: center;
+    color: var(--color-accent);
+    display: flex;
+    flex-direction: column;
+    font-size: 150%;
+    font-weight: normal;
+    line-height: 1.2;
+    margin: 15vh 0;
+  }
+
+  .en {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 150%;
+    font-style: italic;
+  }
+</style>
