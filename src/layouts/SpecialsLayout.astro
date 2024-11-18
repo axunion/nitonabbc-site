@@ -32,36 +32,34 @@ const pageTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={pageTitle} />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap&text=仁戸名聖書バプテスト教会"
+    />
     <title>{pageTitle}</title>
   </head>
 
   <body>
-    <div class="viewport">
-      <Header />
-      <Nav />
+    <Header />
+    <Nav />
 
-      <main class="main">
-        <section class="block" data-scroll="theme-light">
-          <div class="box">
-            <slot />
-          </div>
-        </section>
-      </main>
+    <main class="main">
+      <section class="block" data-scroll="theme-light">
+        <div class="box">
+          <slot />
+        </div>
+      </section>
+    </main>
 
-      <Footer />
-    </div>
+    <Footer />
   </body>
 </html>
 
 <script src="@/scripts/scroll.ts"></script>
 
 <style>
-  .viewport {
-    min-height: 100vh;
-    min-width: 320px;
-    position: relative;
-  }
-
   .main {
     margin: 0 auto;
     max-width: 600px;
