@@ -15,9 +15,11 @@
     "@astrojs/rss": "^4.0.9",
     "@astrojs/sitemap": "^3.2.1",
     "astro": "^4.16.13",
+    "astro-icon": "^1.1.2",
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@iconify-json/mdi": "^1.2.1",
     "@types/grecaptcha": "^3.0.9"
   }
 }

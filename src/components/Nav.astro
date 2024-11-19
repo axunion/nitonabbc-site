@@ -1,16 +1,59 @@
 ---
+import { Icon } from "astro-icon/components";
 import Button from "@/components/Button.astro";
 ---
 
 <nav class="nav">
   <ul>
-    <li class="nav-li"><a class="nav-a" href="/">教会について</a></li>
-    <li class="nav-li"><a class="nav-a" href="/access">アクセス</a></li>
-    <li class="nav-li">
-      <a class="nav-a" href="/specials/list/1">イベント</a>
+    <li class="li">
+      <a class="a" href="/">
+        <Icon name="mdi:home-circle-outline" />
+        <div>
+          <div class="en">About the Church</div>
+          <div class="ja">教会について</div>
+        </div>
+      </a>
     </li>
-    <li class="nav-li"><a class="nav-a" href="/faq">よくある質問</a></li>
-    <li class="nav-li"><a class="nav-a" href="/contact">お問い合わせ</a></li>
+
+    <li class="li">
+      <a class="a" href="/specials/list/1">
+        <Icon name="mdi:event-note" />
+        <div>
+          <div class="en">Event Information</div>
+          <div class="ja">イベントのご案内</div>
+        </div>
+      </a>
+    </li>
+
+    <li class="li">
+      <a class="a" href="/access">
+        <Icon name="mdi:train-car" />
+        <div>
+          <div class="en">Access</div>
+          <div class="ja">アクセス</div>
+        </div>
+      </a>
+    </li>
+
+    <li class="li">
+      <a class="a" href="/faq">
+        <Icon name="mdi:comment-question-outline" />
+        <div>
+          <div class="en">FAQ</div>
+          <div class="ja">よくある質問</div>
+        </div>
+      </a>
+    </li>
+
+    <li class="li">
+      <a class="a" href="/contact">
+        <Icon name="mdi:invoice-text-send-outline" />
+        <div>
+          <div class="en">Contact Us</div>
+          <div class="ja">お問い合わせ</div>
+        </div>
+      </a>
+    </li>
   </ul>
 
   <div class="close">
@@ -27,7 +70,7 @@ import Button from "@/components/Button.astro";
 <div class="menu">
   <Button>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
-      <path d="M2 6H22V8H2V8Z M2 16H22V18H2V14Z"></path>
+      <path d="M4 6H20V8H4V8Z M4 16H20V18H4V14Z"></path>
     </svg>
   </Button>
 </div>
@@ -38,12 +81,12 @@ import Button from "@/components/Button.astro";
   const closeButton = nav?.querySelector(".close");
 
   menuButton?.addEventListener("click", () => {
-    nav?.classList.add("active");
+    nav?.classList.add("nav-active");
     document.body.classList.add("nav-active");
   });
 
   closeButton?.addEventListener("click", () => {
-    nav?.classList.remove("active");
+    nav?.classList.remove("nav-active");
     document.body.classList.remove("nav-active");
   });
 </script>
@@ -59,7 +102,6 @@ import Button from "@/components/Button.astro";
     opacity: 0;
     overflow-y: scroll;
     position: fixed;
-    text-align: center;
     transform: scale(0);
     transition:
       opacity 0.5s ease-out,
@@ -67,7 +109,7 @@ import Button from "@/components/Button.astro";
     z-index: 1111;
   }
 
-  .nav.active {
+  .nav-active {
     opacity: 1;
     transform: scale(1);
     transition:
@@ -75,8 +117,8 @@ import Button from "@/components/Button.astro";
       transform 0s;
   }
 
-  .nav-li {
-    font-size: 2vw;
+  .li {
+    margin: 0 0 3em;
     opacity: 0;
     transform: translateY(-10px);
     transition:
@@ -84,17 +126,33 @@ import Button from "@/components/Button.astro";
       transform 0.3s;
   }
 
-  .nav-a {
-    display: inline-block;
-    padding: 20px;
-  }
-
-  .active .nav-li {
+  .nav-active .li {
     opacity: 1;
     transform: translateY(0);
     transition:
       opacity 0.3s 0.1s,
       transform 0.3s 0.1s;
+  }
+
+  .a {
+    align-items: center;
+    display: flex;
+    gap: 1em;
+    line-height: 1.2;
+  }
+
+  .a [data-icon] {
+    height: 2.5em;
+    width: 2.5em;
+  }
+
+  .en {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 125%;
+  }
+
+  .ja {
+    letter-spacing: 0.05em;
   }
 
   .close,
@@ -117,17 +175,11 @@ import Button from "@/components/Button.astro";
     z-index: 11;
   }
 
-  .active + .menu {
+  .nav-active + .menu {
     opacity: 0;
   }
 
   .svg {
     fill: currentColor;
-  }
-
-  @media (max-width: 768px) {
-    .nav-li {
-      font-size: 100%;
-    }
   }
 </style>

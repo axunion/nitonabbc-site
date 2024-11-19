@@ -45,12 +45,8 @@ const pageTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
     <Header />
     <Nav />
 
-    <main class="main">
-      <section class="block" data-scroll="theme-light">
-        <div class="box">
-          <slot />
-        </div>
-      </section>
+    <main class="main" data-scroll="theme-light">
+      <slot />
     </main>
 
     <Footer />
