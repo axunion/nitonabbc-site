@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 import Layout from "@/layouts/SpecialsLayout.astro";
 
 export async function getStaticPaths() {
@@ -15,25 +16,37 @@ const { Content } = await post.render();
 ---
 
 <Layout {...post.data}>
-  <article>
+  <article class="article">
     <Content />
 
     <div class="faq">
-      <a href="/faq">教会に関する一般的な質問と回答はこちらをご覧ください</a>
+      <Icon name="mdi:comment-question-outline" />
+      <a href="/faq">
+        教会に関する一般的なご質問と回答は
+        <br />
+        こちらをご覧ください
+      </a>
     </div>
   </article>
 </Layout>
 
 <style>
-  .faq {
-    color: var(--color-accent);
-    display: block;
-    font-size: 100%;
-    margin: 25vh 2em;
-    text-align: center;
+  .article {
+    padding: 10vh 5vw;
   }
 
-  .faq::after {
-    content: "💭";
+  .faq {
+    align-items: center;
+    color: var(--color-accent);
+    display: flex;
+    gap: 0.5em;
+    justify-content: center;
+    margin: 25vh 0;
+  }
+
+  [data-icon] {
+    flex-shrink: 0;
+    height: 2em;
+    width: 2em;
   }
 </style>

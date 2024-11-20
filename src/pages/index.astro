@@ -5,111 +5,109 @@ import ImageCard from "@/components/ImageCard.astro";
 ---
 
 <Layout>
-  <main class="main">
-    <section class="block" data-scroll="theme-light">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
-        <path d="M14 2H10V8H4V12H10V22H14V12H20V8H14V2Z"></path>
-      </svg>
+  <section class="block" data-scroll="theme-light">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+      <path d="M14 2H10V8H4V12H10V22H14V12H20V8H14V2Z"></path>
+    </svg>
 
-      <p class="welcome">
-        A CHURCH FOR WORSHIPING GOD<br />
-        AND LOVING OTHERS
+    <p class="welcome">
+      A CHURCH FOR WORSHIPING GOD<br />
+      AND LOVING OTHERS
+    </p>
+  </section>
+
+  <section class="block" data-scroll="theme-blue">
+    <div>
+      <p>
+        仁戸名聖書バプテスト教会は、1963年に創設以来、60年以上にわたり地域の方々にキリストの愛をお伝えしてきました。
       </p>
-    </section>
+      <p>
+        もし、キリストの愛に触れ、キリストを自分の人生の主として受け入れるなら、誰でも生きがいと希望にあふれた新しい歩みを始めることができると、聖書は教えています。
+      </p>
+      <p>
+        教会での集会や礼拝は、背景や信仰の深さに関係なく、誰でも参加できる場です。気軽にお越しください。
+      </p>
+    </div>
+  </section>
 
-    <section id="greeting" class="block" data-scroll="theme-blue">
-      <div class="box">
-        <p>
-          仁戸名聖書バプテスト教会は、1963年に創設以来、60年以上にわたり地域の方々にキリストの愛をお伝えしてきました。
-        </p>
-        <p>
-          もし、キリストの愛に触れ、キリストを自分の人生の主として受け入れるなら、誰でも生きがいと希望にあふれた新しい歩みを始めることができると、聖書は教えています。
-        </p>
-        <p>
-          教会での集会や礼拝は、背景や信仰の深さに関係なく、誰でも参加できる場です。気軽にお越しください。
-        </p>
-      </div>
-    </section>
+  <section class="block" data-scroll="theme-yellow">
+    <div>
+      <h2 class="h2">礼拝のご案内</h2>
 
-    <section class="block" data-scroll="theme-yellow">
-      <div class="box">
-        <h2 class="h2">礼拝のご案内</h2>
+      <table class="table">
+        <tr>
+          <th class="th">日曜礼拝</th>
+          <td class="td">毎週日曜日</td>
+        </tr>
+        <tr>
+          <th class="th">朝礼拝</th>
+          <td class="td">11:00 - 12:30</td>
+        </tr>
+        <tr>
+          <th class="th">夕礼拝</th>
+          <td class="td">14:30 - 15:30</td>
+        </tr>
+      </table>
 
-        <table class="table">
-          <tr>
-            <th class="th">日曜礼拝</th>
-            <td class="td">毎週日曜日</td>
-          </tr>
-          <tr>
-            <th class="th">朝礼拝</th>
-            <td class="td">11:00 - 12:30</td>
-          </tr>
-          <tr>
-            <th class="th">夕礼拝</th>
-            <td class="td">14:30 - 15:30</td>
-          </tr>
-        </table>
+      <table class="table">
+        <tr>
+          <th class="th">祈祷会</th>
+          <td class="td">毎週水曜日</td>
+        </tr>
+        <tr>
+          <th class="th">午前の部</th>
+          <td class="td">10:30 - 12:00</td>
+        </tr>
+        <tr>
+          <th class="th">夜間の部</th>
+          <td class="td">19:00 - 20:30</td>
+        </tr>
+      </table>
+    </div>
+  </section>
 
-        <table class="table">
-          <tr>
-            <th class="th">祈祷会</th>
-            <td class="td">毎週水曜日</td>
-          </tr>
-          <tr>
-            <th class="th">午前の部</th>
-            <td class="td">10:30 - 12:00</td>
-          </tr>
-          <tr>
-            <th class="th">夜間の部</th>
-            <td class="td">19:00 - 20:30</td>
-          </tr>
-        </table>
-      </div>
-    </section>
+  <section>
+    <div class="block" data-scroll="theme-brown">
+      <div>
+        <ImageCard
+          title={{ en: "Pastor", ja: "牧師" }}
+          name={{ en: "Kobayashi Hideo", ja: "小林秀夫" }}
+          src="/img/pastor.jpg"
+        />
 
-    <section id="pastor">
-      <div class="block" data-scroll="theme-brown">
-        <div class="box">
-          <ImageCard
-            title={{ en: "Pastor", ja: "牧師" }}
-            name={{ en: "Kobayashi Hideo", ja: "小林秀夫" }}
-            src="/img/pastor.jpg"
-          />
-
-          <div class="introduction">
-            <p>
-              1955年、埼玉県秩父市で誕生。7歳の時に父親の転勤で千葉に転居し、以来現在まで千葉に在住。13歳の時に教会に通うようになり、その頃から将来牧師になる事を目指すようになった。
-            </p>
-            <p>
-              24歳の時に、千葉大学理学部在学中に神学校入学を決心し、大学を中退して、日本バプテスト聖書神学校に入学。27歳で卒業後、現在の仁戸名聖書バプテスト教会の牧師に招かれ、現在に至る。
-            </p>
-            <p>趣味は、読書、音楽鑑賞、考古学などの研究。</p>
-          </div>
+        <div class="introduction">
+          <p>
+            1955年、埼玉県秩父市で誕生。7歳の時に父親の転勤で千葉に転居し、以来現在まで千葉に在住。13歳の時に教会に通うようになり、その頃から将来牧師になる事を目指すようになった。
+          </p>
+          <p>
+            24歳の時に、千葉大学理学部在学中に神学校入学を決心し、大学を中退して、日本バプテスト聖書神学校に入学。27歳で卒業後、現在の仁戸名聖書バプテスト教会の牧師に招かれ、現在に至る。
+          </p>
+          <p>趣味は、読書、音楽鑑賞、考古学などの研究。</p>
         </div>
       </div>
+    </div>
 
-      <div class="block" data-scroll="theme-green">
-        <div class="box">
-          <ImageCard
-            title={{ en: "Evangelist", ja: "伝道師" }}
-            name={{ en: "Kobayashi David", ja: "小林太秀" }}
-            src="/img/evangelist.jpg"
-          />
+    <div class="block" data-scroll="theme-green">
+      <div>
+        <ImageCard
+          title={{ en: "Evangelist", ja: "伝道師" }}
+          name={{ en: "Kobayashi David", ja: "小林太秀" }}
+          src="/img/evangelist.jpg"
+        />
 
-          <div class="introduction">
-            <p>
-              1989年千葉市生まれ。2013年仁戸名聖書バプテスト教会アブラハムミッションカレッジ卒業。2014年仁戸名教会伝道師就任。
-            </p>
-            <p>現在は次世代の育成をミニストリーの中心に据えて奉仕している。</p>
-          </div>
+        <div class="introduction">
+          <p>
+            1989年千葉市生まれ。2013年仁戸名聖書バプテスト教会アブラハムミッションカレッジ卒業。2014年仁戸名教会伝道師就任。
+          </p>
+          <p>現在は次世代の育成をミニストリーの中心に据えて奉仕している。</p>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 </Layout>
 
 <style>
-  .main {
+  .block {
     font-size: 2vw;
   }
 
@@ -155,7 +153,7 @@ import ImageCard from "@/components/ImageCard.astro";
   }
 
   @media (max-width: 768px) {
-    .main {
+    .block {
       font-size: 100%;
     }
 

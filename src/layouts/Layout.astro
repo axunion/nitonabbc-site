@@ -43,10 +43,19 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
     <Header />
     <Nav />
 
-    <slot />
+    <main class="main">
+      <slot />
+    </main>
 
     <Footer />
   </body>
 </html>
 
 <script src="@/scripts/scroll.ts"></script>
+
+<style>
+  .main {
+    margin: auto;
+    max-width: 800px;
+  }
+</style>
