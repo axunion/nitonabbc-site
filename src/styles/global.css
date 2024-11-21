@@ -51,7 +51,7 @@ ul {
 
 p {
   font-feature-settings: "palt";
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   line-height: 1.8;
   margin: 1em 0;
 }
@@ -82,6 +82,5 @@ img {
   flex-direction: column;
   justify-content: center;
   min-height: 100vh;
-  overflow: hidden;
-  padding: 10vh 5vw;
+  padding: 10vh 0;
 }
