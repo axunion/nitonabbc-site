@@ -20,11 +20,14 @@ const { Content } = await post.render();
     <Content />
 
     <div class="faq">
-      <Icon name="mdi:comment-question-outline" />
-      <a href="/faq">
-        教会に関する一般的なご質問と回答は
-        <br />
-        こちらをご覧ください
+      <a class="faq-link" href="/faq">
+        <Icon name="mdi:question-box-multiple-outline" />
+
+        <span>
+          教会に関する一般的なご質問と回答は
+          <br />
+          こちらをご覧ください
+        </span>
       </a>
     </div>
   </article>
@@ -36,13 +39,21 @@ const { Content } = await post.render();
   }
 
   .faq {
+    display: flex;
+    justify-content: center;
+    margin: 25vh 0 0;
+  }
+
+  .faq-link {
     align-items: center;
+    border: currentColor solid 1px;
+    border-radius: 5em;
     color: var(--color-accent);
     display: flex;
-    font-size: 90%;
+    font-size: 85%;
     gap: 0.5em;
-    justify-content: center;
-    margin: 25vh 0;
+    padding: 1em 1.5em;
+    text-decoration: none;
   }
 
   [data-icon] {

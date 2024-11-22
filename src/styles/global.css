@@ -74,13 +74,3 @@ img {
 .grecaptcha-badge {
   visibility: hidden;
 }
-
-.block {
-  align-items: center;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 10vh 0;
-}
