@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import Layout from "@/layouts/Layout.astro";
 import Heading from "@/components/Heading.astro";
 ---
@@ -21,23 +22,26 @@ import Heading from "@/components/Heading.astro";
         <b class="address-head">仁戸名聖書バプテスト教会</b>
 
         <address class="address">
-          <small class="postcode">260-0801</small><br />
+          <small>〒260-0801</small>
+          <br />
           千葉市中央区仁戸名町656-15
-          <div class="tel">043-263-3883</div>
+          <br />
+          <Icon name="mdi:telephone" />
+          043-263-3883
         </address>
 
         <dl class="dl">
           <dt class="dt">鉄道</dt>
-          <dd class="dd">京成電鉄 <b>大森台駅</b> より徒歩15分</dd>
+          <dd class="dd">京成電鉄<b>大森台駅</b>より徒歩15分</dd>
           <dt class="dt">バス</dt>
-          <dd class="dd">千葉中央バス <b>仁戸名局</b> より徒歩5分</dd>
+          <dd class="dd">千葉中央バス<b>仁戸名局</b>より徒歩5分</dd>
           <dt class="dt">お車</dt>
           <dd class="dd">駐車場をご利用いただけます</dd>
         </dl>
       </div>
 
       <p>
-        住宅街の奥まった一角に位置しております。対応が可能な場合は無料で送迎させていただいておりますので、お気軽にご相談ください。
+        当教会は住宅街の奥まった一角に位置しております。ご希望に応じて、無料送迎を承る場合がございますので、お気軽にご相談ください。
       </p>
     </div>
   </section>
@@ -74,23 +78,6 @@ import Heading from "@/components/Heading.astro";
   .address {
     font-style: normal;
     margin: 1.5em 0.5em;
-  }
-
-  .postcode::before,
-  .tel::before {
-    margin: 0 0.25em 0 0;
-  }
-
-  .postcode::before {
-    content: "〒";
-  }
-
-  .tel {
-    margin: 0.5em 0 0;
-  }
-
-  .tel::before {
-    content: "℡";
   }
 
   .dl {
