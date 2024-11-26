@@ -12,6 +12,7 @@ type Props = {
 };
 
 const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
+const pageTitle = title ? `${title} - ${SITE_TITLE}` : SITE_TITLE;
 ---
 
 <!doctype html>
@@ -36,7 +37,7 @@ const { title = SITE_TITLE, description = SITE_DESCRIPTION } = Astro.props;
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap&text=仁戸名聖書バプテスト教会"
     />
-    <title>{title}</title>
+    <title>{pageTitle}</title>
   </head>
 
   <body>

@@ -15,9 +15,15 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
 const { page } = Astro.props;
 const prevUrl = page.url.prev;
 const nextUrl = page.url.next;
+
+const meta = {
+  title: "イベントのご案内",
+  description:
+    "仁戸名聖書バプテスト教会が主催するイベント情報をご案内します。初めての方やお子様連れの方にも安心してご参加いただける特別礼拝やイベントを開催していますので、ぜひお気軽にお越しください。",
+};
 ---
 
-<Layout>
+<Layout {...meta}>
   <section class="message">
     <Heading en="Event Information" ja="イベントのご案内" />
 

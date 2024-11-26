@@ -2,9 +2,15 @@
 import { Icon } from "astro-icon/components";
 import Layout from "@/layouts/Layout.astro";
 import Heading from "@/components/Heading.astro";
+
+const meta = {
+  title: "よくある質問",
+  description:
+    "仁戸名聖書バプテスト教会へのよくある質問にお答えします。礼拝の時間や参加方法、教会の活動についてなど、初めての方やご家族連れの方も安心してご利用いただけます。",
+};
 ---
 
-<Layout title="よくある質問 - 仁戸名聖書バプテスト教会">
+<Layout {...meta}>
   <section class="block" data-scroll="theme-light">
     <Heading en="FAQ" ja="よくある質問" />
 

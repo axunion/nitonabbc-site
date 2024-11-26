@@ -6,9 +6,15 @@ import Button from "@/components/Button.astro";
 import Heading from "@/components/Heading.astro";
 import Input from "@/components/Input.astro";
 import InputRadio from "@/components/InputRadio.astro";
+
+const meta = {
+  title: "お問い合わせ",
+  description:
+    "仁戸名聖書バプテスト教会へのお問い合わせはこちらから。教会の場所や礼拝の時間、活動についてのご質問やご相談をお気軽にお寄せください。",
+};
 ---
 
-<Layout title="お問い合わせ - 仁戸名聖書バプテスト教会">
+<Layout {...meta}>
   <section class="block input" data-scroll="theme-light">
     <Heading en="Contact Us" ja="お問い合わせ" />
 

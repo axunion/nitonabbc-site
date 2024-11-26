@@ -2,9 +2,15 @@
 import { Icon } from "astro-icon/components";
 import Layout from "@/layouts/Layout.astro";
 import Heading from "@/components/Heading.astro";
+
+const meta = {
+  title: "アクセス",
+  description:
+    "仁戸名聖書バプテスト教会へのアクセス情報を掲載しています。所在地、最寄り駅、駐車場情報、地図をご覧いただけます。どなたでも安心してお越しいただけるよう、詳細をご案内しています。",
+};
 ---
 
-<Layout title="アクセス - 仁戸名聖書バプテスト教会">
+<Layout {...meta}>
   <section class="block" data-scroll="theme-light">
     <Heading en="Access" ja="アクセス" />
 
