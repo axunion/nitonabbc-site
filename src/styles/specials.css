@@ -1,7 +1,7 @@
 article h2 {
   color: var(--color-accent);
   font-size: 125%;
-  margin: 2em 0;
+  margin: 10vh 0 1em;
   text-align: center;
 }
 

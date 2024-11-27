@@ -8,20 +8,18 @@ const { en, ja } = Astro.props;
 ---
 
 <h2 class="h2">
-  <span class="en">{en}</span>
+  <span class="en">{en}</span><br />
   <span>{ja}</span>
 </h2>
 
 <style>
   .h2 {
-    align-items: center;
     color: var(--color-accent);
-    display: flex;
-    flex-direction: column;
     font-size: 150%;
     font-weight: normal;
     line-height: 1.2;
-    margin: 20vh 0 10vh;
+    margin: 15vh 0;
+    text-align: center;
   }
 
   .en {
