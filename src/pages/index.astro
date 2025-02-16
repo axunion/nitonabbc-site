@@ -111,7 +111,7 @@ import ImageCard from "@/components/ImageCard.astro";
     align-items: center;
     display: flex;
     flex-direction: column;
-    font-size: 2vw;
+    font-size: clamp(1rem, 2vw, 2rem);
     justify-content: center;
     min-height: 80vh;
     padding: 10vh 0;
@@ -119,13 +119,13 @@ import ImageCard from "@/components/ImageCard.astro";
 
   .svg {
     fill: currentColor;
-    height: 32px;
+    height: 24px;
   }
 
   .welcome {
-    animation: fade-up-in 3s ease-out;
+    animation: fade-up-in 1.5s ease-out;
     font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 18px;
+    font-size: 14px;
     margin: 40px 0 0;
     text-align: center;
   }
@@ -156,19 +156,5 @@ import ImageCard from "@/components/ImageCard.astro";
   .introduction {
     font-size: 90%;
     padding: 1.5em;
-  }
-
-  @media (max-width: 768px) {
-    .block {
-      font-size: 100%;
-    }
-
-    .svg {
-      height: 24px;
-    }
-
-    .welcome {
-      font-size: 14px;
-    }
   }
 </style>
