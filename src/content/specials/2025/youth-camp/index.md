@@ -4,12 +4,12 @@ title: "第56回JBBF全国青年フェローシップキャンプ"
 tags:
   - "2025"
   - "youth-camp"
-cover: "./brochure.png"
+cover: "./brochure.web"
 ---
 
 ## 第56回JBBF全国青年フェローシップキャンプ
 
-![](./brochure.png)
+![](./brochure.web)
 
 ---
 
