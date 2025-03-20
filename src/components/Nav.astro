@@ -112,26 +112,42 @@ import Button from "@/components/Button.astro";
   .nav-active {
     opacity: 1;
     transform: scale(1);
-    transition:
-      opacity 0s,
-      transform 0s;
+    transition: 0s;
   }
 
   .li {
     margin: 0 0 2em;
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-20px);
     transition:
       opacity 0.3s,
-      transform 0.3s;
+      transform 0s 0.5s;
+  }
+
+  .li:nth-child(1) {
+    --n: 1;
+  }
+
+  .li:nth-child(2) {
+    --n: 2;
+  }
+
+  .li:nth-child(3) {
+    --n: 3;
+  }
+
+  .li:nth-child(4) {
+    --n: 4;
+  }
+
+  .li:nth-child(5) {
+    --n: 5;
   }
 
   .nav-active .li {
     opacity: 1;
     transform: translateY(0);
-    transition:
-      opacity 0.3s 0.1s,
-      transform 0.3s 0.1s;
+    transition: 0.3s calc(var(--n) * 0.05s) ease-out;
   }
 
   .a {
