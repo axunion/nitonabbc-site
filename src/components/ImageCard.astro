@@ -19,10 +19,8 @@ const { title, name, src } = Astro.props;
     {
       title.en && title.ja && (
         <h2 class="h2">
-          <>
-            <span class="en">{title.en}</span>
-            <br />
-          </>
+          <span class="en">{title.en}</span>
+          <br />
           <span class="ja">{title.ja}</span>
         </h2>
       )
@@ -30,10 +28,8 @@ const { title, name, src } = Astro.props;
     {
       name.en && name.ja && (
         <h3 class="h3">
-          <>
-            <span class="en">{name.en}</span>
-            <br />
-          </>
+          <span class="en">{name.en}</span>
+          <br />
           <span class="ja">{name.ja}</span>
         </h3>
       )

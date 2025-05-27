@@ -3,11 +3,11 @@ import { type HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"input">;
 
-const { name, value, ...attrs } = Astro.props;
+const { ...attrs } = Astro.props;
 ---
 
 <label class="label">
-  <input class="input" type="radio" name={name} value={value} {...attrs} />
+  <input class="input" type="radio" {...attrs} />
   <div class="item">
     <slot />
   </div>

@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 import Layout from "@/layouts/Layout.astro";
 import Button from "@/components/Button.astro";
 import Heading from "@/components/Heading.astro";
-import Input from "@/components/Input.astro";
+import InputText from "@/components/InputText.astro";
 import InputRadio from "@/components/InputRadio.astro";
 
 const meta = {
@@ -40,13 +40,13 @@ const meta = {
 
       <div class="item">
         <div class="title">メールアドレス</div>
-        <Input type="email" name="email" maxlength="128" required />
+        <InputText type="email" name="email" maxlength="128" required />
 
         <div class="title">電話番号</div>
-        <Input type="text" name="tel" maxlength="12" />
+        <InputText type="tel" name="tel" maxlength="12" />
 
         <div class="title">お名前</div>
-        <Input type="text" name="name" maxlength="64" />
+        <InputText type="text" name="name" maxlength="64" />
       </div>
 
       <div class="button">
