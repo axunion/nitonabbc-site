@@ -15,92 +15,108 @@ const meta = {
 ---
 
 <Layout {...meta}>
-  <section class="block input" data-scroll="theme-light">
-    <Heading en="Contact Us" ja="お問い合わせ" />
+  <div
+    class="container"
+    x-data="{ status: '' }"
+    @done="status = 'done';"
+    @error="status = 'error';"
+  >
+    <section class="block" data-scroll="theme-light" x-show="status === ''">
+      <Heading en="Contact Us" ja="お問い合わせ" />
 
-    <form class="form">
-      <div class="item">
-        <div class="title">お問い合わせ内容を選択ください</div>
-        <InputRadio name="inquiry" value="教会の場所や駐車場について" checked>
-          教会の場所や駐車場について
-        </InputRadio>
+      <form class="form" @submit="status ='submitting'">
+        <div class="item">
+          <div class="title">お問い合わせ内容を選択ください</div>
+          <InputRadio name="inquiry" value="教会の場所や駐車場について" checked>
+            教会の場所や駐車場について
+          </InputRadio>
 
-        <InputRadio name="inquiry" value="礼拝の時間や内容について">
-          礼拝の時間や内容について
-        </InputRadio>
+          <InputRadio name="inquiry" value="礼拝の時間や内容について">
+            礼拝の時間や内容について
+          </InputRadio>
 
-        <InputRadio name="inquiry" value="その他">その他</InputRadio>
+          <InputRadio name="inquiry" value="その他">その他</InputRadio>
+        </div>
+
+        <div class="item">
+          <div class="title">ご希望の返信方法を選択ください</div>
+          <InputRadio name="reply" value="メール" checked>メール</InputRadio>
+          <InputRadio name="reply" value="電話">電話</InputRadio>
+        </div>
+
+        <div class="item">
+          <div class="title">メールアドレス</div>
+          <InputText type="email" name="email" maxlength="128" required />
+
+          <div class="title">電話番号</div>
+          <InputText type="tel" name="tel" maxlength="12" />
+
+          <div class="title">お名前</div>
+          <InputText type="text" name="name" maxlength="64" />
+        </div>
+
+        <div class="button">
+          <Button type="submit" variant="contained">送信</Button>
+        </div>
+
+        <p class="recaptcha">
+          This site is protected by reCAPTCHA and the Google
+          <a class="link" href="https://policies.google.com/privacy">
+            Privacy Policy
+          </a>
+          and
+          <a class="link" href="https://policies.google.com/terms">
+            Terms of Service
+          </a>
+          apply.
+        </p>
+      </form>
+    </section>
+
+    <section
+      class="block"
+      data-scroll="theme-light"
+      x-show="status === 'submitting'"
+      style="display: none;"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+        <path
+          d="M3.5 1.3457C3.58425 1.3457 3.66714 1.36699 3.74096 1.4076L22.2034 11.562C22.4454 11.695 22.5337 11.9991 22.4006 12.241C22.3549 12.3241 22.2865 12.3925 22.2034 12.4382L3.74096 22.5925C3.499 22.7256 3.19497 22.6374 3.06189 22.3954C3.02129 22.3216 3 22.2387 3 22.1544V1.8457C3 1.56956 3.22386 1.3457 3.5 1.3457ZM5 4.38261V11.0001H10V13.0001H5V19.6175L18.8499 12.0001L5 4.38261Z"
+        ></path>
+      </svg>
+    </section>
+
+    <section
+      class="block"
+      data-scroll="theme-light"
+      x-show="status === 'done'"
+      style="display: none;"
+    >
+      <div class="box">
+        <h3 class="h3">
+          <Icon name="mdi:success-circle-outline" />
+          <span>送信しました</span>
+        </h3>
+        <p>内容を確認次第、折り返しご連絡いたします。</p>
       </div>
+    </section>
 
-      <div class="item">
-        <div class="title">ご希望の返信方法を選択ください</div>
-        <InputRadio name="reply" value="メール" checked>メール</InputRadio>
-        <InputRadio name="reply" value="電話">電話</InputRadio>
+    <section
+      class="block"
+      data-scroll="theme-light"
+      x-show="status === 'error'"
+      style="display: none;"
+    >
+      <div class="box">
+        <h3 class="h3">
+          <Icon name="mdi:error-outline" />
+          <span>送信に失敗しました</span>
+        </h3>
+        <p>恐れ入りますが、しばらく時間をおいて再度お試しください。</p>
       </div>
-
-      <div class="item">
-        <div class="title">メールアドレス</div>
-        <InputText type="email" name="email" maxlength="128" required />
-
-        <div class="title">電話番号</div>
-        <InputText type="tel" name="tel" maxlength="12" />
-
-        <div class="title">お名前</div>
-        <InputText type="text" name="name" maxlength="64" />
-      </div>
-
-      <div class="button">
-        <Button type="submit" variant="contained">送信</Button>
-      </div>
-
-      <p class="recaptcha">
-        This site is protected by reCAPTCHA and the Google
-        <a class="link" href="https://policies.google.com/privacy">
-          Privacy Policy
-        </a>
-        and
-        <a class="link" href="https://policies.google.com/terms">
-          Terms of Service
-        </a>
-        apply.
-      </p>
-    </form>
-  </section>
-
-  <section class="block wait hidden" data-scroll="theme-light">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
-      <path
-        d="M3.5 1.3457C3.58425 1.3457 3.66714 1.36699 3.74096 1.4076L22.2034 11.562C22.4454 11.695 22.5337 11.9991 22.4006 12.241C22.3549 12.3241 22.2865 12.3925 22.2034 12.4382L3.74096 22.5925C3.499 22.7256 3.19497 22.6374 3.06189 22.3954C3.02129 22.3216 3 22.2387 3 22.1544V1.8457C3 1.56956 3.22386 1.3457 3.5 1.3457ZM5 4.38261V11.0001H10V13.0001H5V19.6175L18.8499 12.0001L5 4.38261Z"
-      ></path>
-    </svg>
-  </section>
-
-  <section class="block done hidden" data-scroll="theme-light">
-    <div class="box">
-      <h3 class="h3">
-        <Icon name="mdi:success-circle-outline" />
-        <span>送信しました</span>
-      </h3>
-      <p>内容を確認次第、折り返しご連絡いたします。</p>
-    </div>
-  </section>
-
-  <section class="block fail hidden" data-scroll="theme-light">
-    <div class="box">
-      <h3 class="h3">
-        <Icon name="mdi:error-outline" />
-        <span>送信に失敗しました</span>
-      </h3>
-      <p>恐れ入りますが、しばらく時間をおいて再度お試しください。</p>
-    </div>
-  </section>
+    </section>
+  </div>
 </Layout>
-
-<script
-  is:inline
-  src="https://www.google.com/recaptcha/api.js?render=6LemGUgpAAAAAHNy3XuUPkWhP2KZXkp1EfmC5lDh"
-></script>
-<script src="@/scripts/contact.ts"></script>
 
 <style>
   .block {
@@ -109,10 +125,6 @@ const meta = {
     flex-direction: column;
     justify-content: center;
     min-height: 100vh;
-  }
-
-  .hidden {
-    display: none;
   }
 
   .form {
@@ -194,3 +206,50 @@ const meta = {
     text-decoration: underline;
   }
 </style>
+
+<script
+  is:inline
+  src="https://www.google.com/recaptcha/api.js?render=6LemGUgpAAAAAHNy3XuUPkWhP2KZXkp1EfmC5lDh"
+></script>
+<script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<script>
+  type PostResponse = {
+    result: "done" | "error";
+    error: string;
+  };
+
+  const ENDPOINT = import.meta.env.PUBLIC_ENDPOINT;
+  const SITEKEY = import.meta.env.PUBLIC_SITEKEY;
+  const form = document.querySelector(".form") as HTMLFormElement;
+  const container = document.querySelector(".container") as HTMLDivElement;
+
+  form.addEventListener("submit", async (event: Event) => {
+    event.preventDefault();
+    window.scrollTo(0, 0);
+
+    grecaptcha.ready(async () => {
+      const formData = new FormData(form);
+      const postData = Object.fromEntries(formData.entries());
+
+      postData.type = "000000";
+      postData.recaptcha = await grecaptcha.execute(SITEKEY, {
+        action: "submit",
+      });
+
+      const response = await fetch(ENDPOINT, {
+        method: "POST",
+        body: JSON.stringify(postData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
+      const responseData: PostResponse = await response.json();
+
+      setTimeout(() => {
+        container.dispatchEvent(new CustomEvent(responseData.result));
+      }, 100);
+    });
+  });
+</script>
