@@ -21,7 +21,11 @@ const meta = {
     @done="status = 'done';"
     @error="status = 'error';"
   >
-    <section class="block" data-scroll="theme-light" x-show="status === ''">
+    <section
+      class="block"
+      data-scroll="theme-light"
+      x-show="status === '' || status === 'submitting'"
+    >
       <Heading en="Contact Us" ja="お問い合わせ" />
 
       <form class="form" @submit="status ='submitting'">
@@ -74,7 +78,7 @@ const meta = {
     </section>
 
     <section
-      class="block"
+      class="submitting"
       data-scroll="theme-light"
       x-show="status === 'submitting'"
       style="display: none;"
@@ -92,9 +96,9 @@ const meta = {
       x-show="status === 'done'"
       style="display: none;"
     >
-      <div class="box">
+      <div class="box done">
         <h3 class="h3">
-          <Icon name="mdi:success-circle-outline" />
+          <Icon name="line-md:confirm-circle" />
           <span>送信しました</span>
         </h3>
         <p>内容を確認次第、折り返しご連絡いたします。</p>
@@ -107,9 +111,9 @@ const meta = {
       x-show="status === 'error'"
       style="display: none;"
     >
-      <div class="box">
+      <div class="box error">
         <h3 class="h3">
-          <Icon name="mdi:error-outline" />
+          <Icon name="line-md:alert-circle" />
           <span>送信に失敗しました</span>
         </h3>
         <p>恐れ入りますが、しばらく時間をおいて再度お試しください。</p>
@@ -120,10 +124,6 @@ const meta = {
 
 <style>
   .block {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     min-height: 100vh;
   }
 
@@ -146,44 +146,13 @@ const meta = {
     height: 4em;
   }
 
-  .box {
-    border: var(--color-text) solid 2px;
-    border-radius: 0.5em;
-    padding: 5vh 5vw;
-  }
-
-  .h3 {
-    align-items: center;
-    display: flex;
-    font-size: 125%;
-    gap: 0.5em;
-    justify-content: center;
-    margin: 1em 0;
-  }
-
-  [data-icon] {
-    height: 1.5em;
-    width: 1.5em;
-  }
-
-  .done {
-    .box {
-      border-color: var(--color-accent-complement);
-    }
-
-    [data-icon] {
-      color: var(--color-accent-complement);
-    }
-  }
-
-  .fail {
-    .box {
-      border-color: var(--color-accent);
-    }
-
-    [data-icon] {
-      color: var(--color-accent);
-    }
+  .submitting {
+    backdrop-filter: blur(3px);
+    background: #ffffff80;
+    inset: 0;
+    padding: 40vh 0 0;
+    position: fixed;
+    text-align: center;
   }
 
   .svg {
@@ -204,6 +173,39 @@ const meta = {
 
   .link {
     text-decoration: underline;
+  }
+
+  .box {
+    align-items: center;
+    border: currentColor solid 2px;
+    border-radius: 0.5em;
+    display: flex;
+    flex-direction: column;
+    margin: 20vh auto;
+    max-width: 480px;
+    padding: 5vh 2em;
+  }
+
+  .h3 {
+    align-items: center;
+    display: flex;
+    font-size: 125%;
+    gap: 0.5em;
+    justify-content: center;
+    margin: 1em 0;
+  }
+
+  .done {
+    color: var(--color-accent-complement);
+  }
+
+  .error {
+    color: var(--color-accent);
+  }
+
+  [data-icon] {
+    height: 2em;
+    width: 2em;
   }
 </style>
 

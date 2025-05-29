@@ -18,6 +18,7 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
+    "@iconify-json/line-md": "^1.2.8",
     "@iconify-json/mdi": "^1.2.3",
     "@types/grecaptcha": "^3.0.9",
     "astro-icon": "^1.1.5"
