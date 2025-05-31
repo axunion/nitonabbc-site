@@ -27,4 +27,9 @@ const { ...attrs } = Astro.props;
   .input:focus {
     border: var(--color-accent) solid 1px;
   }
+
+  input:disabled {
+    background: var(--color-secondary);
+    border: var(--color-secondary) solid 1px;
+  }
 </style>

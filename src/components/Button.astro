@@ -1,5 +1,5 @@
 ---
-import { type HTMLAttributes } from "astro/types";
+import type { HTMLAttributes } from "astro/types";
 
 interface Props extends HTMLAttributes<"button"> {
   variant?: "text" | "contained" | "outlined";
@@ -9,7 +9,9 @@ const { type = "button", variant = "text" } = Astro.props;
 ---
 
 <button type={type} class:list={["button", variant]}>
-  <slot />
+  <span>
+    <slot />
+  </span>
 </button>
 
 <style>
@@ -27,7 +29,7 @@ const { type = "button", variant = "text" } = Astro.props;
     margin: 0;
     outline: 0;
     padding: 0;
-    vertical-align: middle;
+    vertical-align: top;
     width: 100%;
   }
 
@@ -35,16 +37,21 @@ const { type = "button", variant = "text" } = Astro.props;
     cursor: not-allowed;
   }
 
+  .contained,
+  .outlined {
+    align-items: center;
+    border-radius: 4px;
+    display: inline-flex;
+    justify-content: center;
+    line-height: 1.4;
+    padding: 0 1em;
+    transition: 0.15s;
+  }
+
   .contained {
     background: var(--color-accent);
     border: var(--color-accent) solid 1px;
-    border-radius: 4px;
     color: var(--color-background);
-    display: inline-block;
-    letter-spacing: 0.1em;
-    padding: 1.5em 0;
-    text-align: center;
-    transition: 0.15s;
   }
 
   .contained:hover {
@@ -59,13 +66,7 @@ const { type = "button", variant = "text" } = Astro.props;
 
   .outlined {
     border: var(--color-primary) solid 1px;
-    border-radius: 4px;
     color: var(--color-primary);
-    display: inline-block;
-    letter-spacing: 0.1em;
-    padding: 1.5em 0;
-    text-align: center;
-    transition: 0.15s;
   }
 
   .outlined:hover {

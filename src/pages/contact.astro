@@ -17,7 +17,7 @@ const meta = {
 <Layout {...meta}>
   <div
     class="container"
-    x-data="{ status: '' }"
+    x-data="{ status: '', inquiry: '教会の場所や駐車場について', reply: 'メール' }"
     @done="status = 'done';"
     @error="status = 'error';"
   >
@@ -29,35 +29,63 @@ const meta = {
       <Heading en="Contact Us" ja="お問い合わせ" />
 
       <form class="form" @submit="status ='submitting'">
-        <div class="item">
-          <div class="title">お問い合わせ内容を選択ください</div>
-          <InputRadio name="inquiry" value="教会の場所や駐車場について" checked>
-            教会の場所や駐車場について
-          </InputRadio>
+        <div class="title">お問い合わせ内容を選択ください</div>
+        <InputRadio
+          name="inquiry"
+          value="教会の場所や駐車場について"
+          x-model="inquiry"
+        >
+          教会の場所や駐車場について
+        </InputRadio>
+        <InputRadio
+          name="inquiry"
+          value="礼拝の時間や内容について"
+          x-model="inquiry"
+        >
+          礼拝の時間や内容について
+        </InputRadio>
+        <InputRadio name="inquiry" value="その他" x-model="inquiry">
+          その他
+        </InputRadio>
 
-          <InputRadio name="inquiry" value="礼拝の時間や内容について">
-            礼拝の時間や内容について
-          </InputRadio>
+        <div class="title">ご希望の返信方法を選択ください</div>
+        <InputRadio name="reply" value="メール" x-model="reply">
+          メール
+        </InputRadio>
+        <InputRadio name="reply" value="電話" x-model="reply">
+          電話
+        </InputRadio>
 
-          <InputRadio name="inquiry" value="その他">その他</InputRadio>
-        </div>
-
-        <div class="item">
-          <div class="title">ご希望の返信方法を選択ください</div>
-          <InputRadio name="reply" value="メール" checked>メール</InputRadio>
-          <InputRadio name="reply" value="電話">電話</InputRadio>
-        </div>
-
-        <div class="item">
+        <div x-show="reply === 'メール'">
           <div class="title">メールアドレス</div>
-          <InputText type="email" name="email" maxlength="128" required />
-
-          <div class="title">電話番号</div>
-          <InputText type="tel" name="tel" maxlength="12" />
-
-          <div class="title">お名前</div>
-          <InputText type="text" name="name" maxlength="64" />
+          <InputText
+            type="email"
+            name="email"
+            maxlength="128"
+            :required="reply === 'メール'"
+            aria-label="メールアドレス"
+          />
         </div>
+
+        <div x-show="reply === '電話'">
+          <div class="title">電話番号 <span class="required">*</span></div>
+          <InputText
+            type="tel"
+            name="tel"
+            maxlength="12"
+            :required="reply === '電話'"
+            aria-label="電話番号"
+          />
+        </div>
+
+        <div class="title">お名前</div>
+        <InputText
+          type="text"
+          name="name"
+          maxlength="64"
+          required
+          aria-label="お名前"
+        />
 
         <div class="button">
           <Button type="submit" variant="contained">送信</Button>
@@ -81,7 +109,6 @@ const meta = {
       class="submitting"
       data-scroll="theme-light"
       x-show="status === 'submitting'"
-      style="display: none;"
     >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
         <path
@@ -90,12 +117,7 @@ const meta = {
       </svg>
     </section>
 
-    <section
-      class="block"
-      data-scroll="theme-light"
-      x-show="status === 'done'"
-      style="display: none;"
-    >
+    <section class="block" data-scroll="theme-light" x-show="status === 'done'">
       <div class="box done">
         <h3 class="h3">
           <Icon name="line-md:confirm-circle" />
@@ -109,7 +131,6 @@ const meta = {
       class="block"
       data-scroll="theme-light"
       x-show="status === 'error'"
-      style="display: none;"
     >
       <div class="box error">
         <h3 class="h3">
@@ -133,17 +154,18 @@ const meta = {
     max-width: 480px;
   }
 
-  .item {
-    margin: 0 0 3em;
-  }
-
   .title {
-    margin: 1em 0 0;
+    margin: 1.5em 0 0;
     padding: 0.25em;
   }
 
   .button {
     height: 4em;
+    margin: 3em 0 0;
+  }
+
+  .link {
+    text-decoration: underline;
   }
 
   .submitting {
@@ -169,10 +191,6 @@ const meta = {
     letter-spacing: 0;
     line-height: 1.2;
     margin: 1em;
-  }
-
-  .link {
-    text-decoration: underline;
   }
 
   .box {
@@ -222,12 +240,11 @@ const meta = {
 
   const ENDPOINT = import.meta.env.PUBLIC_ENDPOINT;
   const SITEKEY = import.meta.env.PUBLIC_SITEKEY;
-  const form = document.querySelector(".form") as HTMLFormElement;
   const container = document.querySelector(".container") as HTMLDivElement;
+  const form = document.querySelector(".form") as HTMLFormElement;
 
   form.addEventListener("submit", async (event: Event) => {
     event.preventDefault();
-    window.scrollTo(0, 0);
 
     grecaptcha.ready(async () => {
       const formData = new FormData(form);
@@ -251,6 +268,7 @@ const meta = {
 
       setTimeout(() => {
         container.dispatchEvent(new CustomEvent(responseData.result));
+        window.scrollTo(0, 0);
       }, 100);
     });
   });
