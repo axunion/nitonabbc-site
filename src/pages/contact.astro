@@ -29,32 +29,36 @@ const meta = {
       <Heading en="Contact Us" ja="お問い合わせ" />
 
       <form class="form" @submit="status ='submitting'">
-        <div class="title">お問い合わせ内容を選択ください</div>
-        <InputRadio
-          name="inquiry"
-          value="教会の場所や駐車場について"
-          x-model="inquiry"
-        >
-          教会の場所や駐車場について
-        </InputRadio>
-        <InputRadio
-          name="inquiry"
-          value="礼拝の時間や内容について"
-          x-model="inquiry"
-        >
-          礼拝の時間や内容について
-        </InputRadio>
-        <InputRadio name="inquiry" value="その他" x-model="inquiry">
-          その他
-        </InputRadio>
+        <div>
+          <div class="title">お問い合わせ内容を選択ください</div>
+          <InputRadio
+            name="inquiry"
+            value="教会の場所や駐車場について"
+            x-model="inquiry"
+          >
+            教会の場所や駐車場について
+          </InputRadio>
+          <InputRadio
+            name="inquiry"
+            value="礼拝の時間や内容について"
+            x-model="inquiry"
+          >
+            礼拝の時間や内容について
+          </InputRadio>
+          <InputRadio name="inquiry" value="その他" x-model="inquiry">
+            その他
+          </InputRadio>
+        </div>
 
-        <div class="title">ご希望の返信方法を選択ください</div>
-        <InputRadio name="reply" value="メール" x-model="reply">
-          メール
-        </InputRadio>
-        <InputRadio name="reply" value="電話" x-model="reply">
-          電話
-        </InputRadio>
+        <div>
+          <div class="title">ご希望の返信方法を選択ください</div>
+          <InputRadio name="reply" value="メール" x-model="reply">
+            メール
+          </InputRadio>
+          <InputRadio name="reply" value="電話" x-model="reply">
+            電話
+          </InputRadio>
+        </div>
 
         <div x-show="reply === 'メール'">
           <div class="title">メールアドレス</div>
@@ -67,8 +71,8 @@ const meta = {
           />
         </div>
 
-        <div x-show="reply === '電話'">
-          <div class="title">電話番号 <span class="required">*</span></div>
+        <div x-show="reply === '電話'" x-cloak>
+          <div class="title">電話番号</div>
           <InputText
             type="tel"
             name="tel"
@@ -78,30 +82,32 @@ const meta = {
           />
         </div>
 
-        <div class="title">お名前</div>
-        <InputText
-          type="text"
-          name="name"
-          maxlength="64"
-          required
-          aria-label="お名前"
-        />
+        <div>
+          <div class="title">お名前</div>
+          <InputText
+            type="text"
+            name="name"
+            maxlength="64"
+            required
+            aria-label="お名前"
+          />
+        </div>
 
         <div class="button">
           <Button type="submit" variant="contained">送信</Button>
-        </div>
 
-        <p class="recaptcha">
-          This site is protected by reCAPTCHA and the Google
-          <a class="link" href="https://policies.google.com/privacy">
-            Privacy Policy
-          </a>
-          and
-          <a class="link" href="https://policies.google.com/terms">
-            Terms of Service
-          </a>
-          apply.
-        </p>
+          <p class="recaptcha">
+            This site is protected by reCAPTCHA and the Google
+            <a class="link" href="https://policies.google.com/privacy">
+              Privacy Policy
+            </a>
+            and
+            <a class="link" href="https://policies.google.com/terms">
+              Terms of Service
+            </a>
+            apply.
+          </p>
+        </div>
       </form>
     </section>
 
@@ -109,6 +115,7 @@ const meta = {
       class="submitting"
       data-scroll="theme-light"
       x-show="status === 'submitting'"
+      x-cloak
     >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
         <path
@@ -117,29 +124,29 @@ const meta = {
       </svg>
     </section>
 
-    <section class="block" data-scroll="theme-light" x-show="status === 'done'">
-      <div class="box done">
-        <h3 class="h3">
-          <Icon name="line-md:confirm-circle" />
-          <span>送信しました</span>
-        </h3>
-        <p>内容を確認次第、折り返しご連絡いたします。</p>
-      </div>
-    </section>
+    <template x-if="status === 'done'">
+      <section class="block" data-scroll="theme-light">
+        <div class="box done">
+          <h3 class="h3">
+            <Icon name="line-md:confirm-circle" />
+            <span>送信しました</span>
+          </h3>
+          <p>内容を確認次第、折り返しご連絡いたします。</p>
+        </div>
+      </section>
+    </template>
 
-    <section
-      class="block"
-      data-scroll="theme-light"
-      x-show="status === 'error'"
-    >
-      <div class="box error">
-        <h3 class="h3">
-          <Icon name="line-md:alert-circle" />
-          <span>送信に失敗しました</span>
-        </h3>
-        <p>恐れ入りますが、しばらく時間をおいて再度お試しください。</p>
-      </div>
-    </section>
+    <template x-if="status === 'error'">
+      <section class="block" data-scroll="theme-light">
+        <div class="box error">
+          <h3 class="h3">
+            <Icon name="line-md:alert-circle" />
+            <span>送信に失敗しました</span>
+          </h3>
+          <p>恐れ入りますが、しばらく時間をおいて再度お試しください。</p>
+        </div>
+      </section>
+    </template>
   </div>
 </Layout>
 
@@ -149,19 +156,20 @@ const meta = {
   }
 
   .form {
-    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
     margin: 0 auto 25vh;
     max-width: 480px;
   }
 
   .title {
-    margin: 1.5em 0 0;
     padding: 0.25em;
   }
 
   .button {
     height: 4em;
-    margin: 3em 0 0;
+    margin: 2em 0 0;
   }
 
   .link {
