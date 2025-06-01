@@ -1,68 +1,53 @@
-# Astro Starter Kit: Blog
+# Nitoname Bible Baptist Church
 
-```sh
-npm create astro@latest -- --template blog
+仁戸名聖書バプテスト教会のウェブサイトです。AstroフレームワークとTypeScriptで作成されています。
+
+## Project Structure
+
+プロジェクトの主なディレクトリ構成です。
+
+```
+public/
+src/
+  components/   # UIコンポーネント
+  content/      # コンテンツコレクション（下記参照）
+  layouts/      # レイアウト
+  pages/        # ページ
+astro.config.mjs
+package.json
+tsconfig.json
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/blog)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/blog)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/blog/devcontainer.json)
+## Content Collections (Astro)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+`src/content/` ディレクトリには、イベントやお知らせなどのMarkdownファイルが年ごと・カテゴリごとに整理されています。
+Astroの[コンテンツコレクション](https://docs.astro.build/ja/guides/content-collections/)機能を利用し、
+`getCollection()` で各コレクションのデータを取得できます。これにより、型安全に記事やイベント情報を管理できます。
 
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
+例: `src/content/specials/` 以下に年度・イベントごとのディレクトリがあり、各イベントの詳細や画像が格納されています。
 
-Features:
+## Commands
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
+主なコマンド一覧です。
 
-## 🚀 Project Structure
+| コマンド              | 説明                         |
+|----------------------|------------------------------|
+| npm install          | 依存パッケージのインストール |
+| npm run dev          | 開発サーバーの起動           |
+| npm run build        | 本番用ビルド                  |
+| npm run preview      | ビルドのローカルプレビュー   |
 
-Inside of your Astro project, you'll see the following folders and files:
+## Dependencies
 
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
+主な依存パッケージは以下の通りです。
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- astro: Astro本体
+- astro-icon: アイコン表示用
+- @iconify-json/line-md, @iconify-json/mdi: アイコンセット
+- @types/grecaptcha: reCAPTCHA型定義
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+詳細は`package.json`をご参照ください。
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## Deployment
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+このサイトはCloudflare Pagesでホスティングされています。GitHubリポジトリと連携しており、mainブランチにpushされると自動的にデプロイされます。
