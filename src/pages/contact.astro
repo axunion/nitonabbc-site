@@ -303,6 +303,7 @@ const meta = {
 
         handleFormResult(responseData.result);
       } catch (error) {
+        console.error("Error submitting form:", error);
         handleFormResult("error");
       }
     });
