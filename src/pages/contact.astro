@@ -280,6 +280,7 @@ const meta = {
 
   form.addEventListener("submit", async (event: Event) => {
     event.preventDefault();
+    document.body.style.overflow = "hidden";
 
     try {
       const formData = new FormData(form);
@@ -303,6 +304,8 @@ const meta = {
     } catch (error) {
       console.error(error);
       handleFormResult("error");
+    } finally {
+      document.body.style.overflow = "";
     }
   });
 </script>
