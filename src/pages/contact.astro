@@ -243,6 +243,7 @@ const meta = {
 ></script>
 <script>
   import { getReCaptchaToken } from "@/scripts/recaptcha";
+  import { CONTACT_ENDPOINT } from "@/consts";
 
   type FromSubmissionSuccessResponse = {
     result: "done";
@@ -267,7 +268,6 @@ const meta = {
     name: string;
   };
 
-  const ENDPOINT = import.meta.env.PUBLIC_CONTACT_ENDPOINT;
   const container = document.querySelector(".container") as HTMLDivElement;
   const form = document.querySelector(".form") as HTMLFormElement;
 
@@ -289,7 +289,7 @@ const meta = {
       postData.type = "000000";
       postData.recaptchaToken = await getReCaptchaToken();
 
-      const response = await fetch(ENDPOINT, {
+      const response = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
         body: JSON.stringify(postData),
       });
