@@ -55,6 +55,8 @@ This is an Astro-based website for a church with Japanese-first content and mode
 
 **Deployment**: Auto-deploys to Cloudflare Pages on `main` branch push
 
+**Commit Messages**: Write in English, keep them simple and focused on the main changes
+
 ## Environment Variables
 
 Required in production:
@@ -63,7 +65,7 @@ Required in production:
 
 ## Code Conventions
 
-- **Language**: User-facing content in Japanese, but all code comments, error messages, commit messages, and developer communication in English
+- **Language**: User-facing content in Japanese, but all code comments, error messages, and developer communication in English
 - **Styling**: Keep it simple - scoped `<style>` blocks in `.astro` components, semantic HTML, minimal CSS
 - **Best Practices**: Follow Astro, HTML, CSS, and TypeScript best practices rigorously:
   - Use semantic HTML elements (`<nav>`, `<section>`, `<article>`, etc.)

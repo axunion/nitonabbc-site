@@ -9,9 +9,10 @@ type Props = {
     ja?: string;
   };
   src: string;
+  alt?: string;
 };
 
-const { title, name, src } = Astro.props;
+const { title, name, src, alt = "" } = Astro.props;
 ---
 
 <div class="img-card">
@@ -37,7 +38,7 @@ const { title, name, src } = Astro.props;
   </div>
 
   <div class="img-box">
-    <img class="img" src={src} alt="" />
+    <img class="img" src={src} alt={alt} />
   </div>
 </div>
 

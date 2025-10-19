@@ -3,10 +3,10 @@ import { Icon } from "astro-icon/components";
 import Button from "@/components/Button.astro";
 ---
 
-<nav class="nav">
-  <ul>
-    <li class="li">
-      <a class="a" href="/">
+<nav class="nav" aria-label="Main navigation" aria-hidden="true">
+  <ul role="menubar">
+    <li class="li" role="none">
+      <a class="a" href="/" role="menuitem">
         <Icon name="mdi:home-circle-outline" />
         <div>
           <div class="en">About the Church</div>
@@ -15,8 +15,8 @@ import Button from "@/components/Button.astro";
       </a>
     </li>
 
-    <li class="li">
-      <a class="a" href="/specials/list/1">
+    <li class="li" role="none">
+      <a class="a" href="/specials/list/1" role="menuitem">
         <Icon name="mdi:event-note" />
         <div>
           <div class="en">Event Information</div>
@@ -25,8 +25,8 @@ import Button from "@/components/Button.astro";
       </a>
     </li>
 
-    <li class="li">
-      <a class="a" href="/access">
+    <li class="li" role="none">
+      <a class="a" href="/access" role="menuitem">
         <Icon name="mdi:train-car" />
         <div>
           <div class="en">Access</div>
@@ -35,8 +35,8 @@ import Button from "@/components/Button.astro";
       </a>
     </li>
 
-    <li class="li">
-      <a class="a" href="/faq">
+    <li class="li" role="none">
+      <a class="a" href="/faq" role="menuitem">
         <Icon name="mdi:comment-question-outline" />
         <div>
           <div class="en">FAQ</div>
@@ -45,8 +45,8 @@ import Button from "@/components/Button.astro";
       </a>
     </li>
 
-    <li class="li">
-      <a class="a" href="/contact">
+    <li class="li" role="none">
+      <a class="a" href="/contact" role="menuitem">
         <Icon name="mdi:invoice-text-send-outline" />
         <div>
           <div class="en">Contact Us</div>
@@ -57,8 +57,8 @@ import Button from "@/components/Button.astro";
   </ul>
 
   <div class="close">
-    <Button>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+    <Button aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg" aria-hidden="true">
         <path
           d="M12.0007 10.5865L16.9504 5.63672L18.3646 7.05093L13.4149 12.0007L18.3646 16.9504L16.9504 18.3646L12.0007 13.4149L7.05093 18.3646L5.63672 16.9504L10.5865 12.0007L5.63672 7.05093L7.05093 5.63672L12.0007 10.5865Z"
         ></path>
@@ -68,8 +68,8 @@ import Button from "@/components/Button.astro";
 </nav>
 
 <div class="menu">
-  <Button>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg">
+  <Button aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg" aria-hidden="true">
       <path d="M4 6H20V8H4V8Z M4 16H20V18H4V14Z"></path>
     </svg>
   </Button>
@@ -185,17 +185,37 @@ import Button from "@/components/Button.astro";
 </style>
 
 <script>
-  const nav = document.querySelector(".nav");
-  const menuButton = document.querySelector(".menu");
-  const closeButton = nav?.querySelector(".close");
+  const nav = document.querySelector(".nav") as HTMLElement;
+  const menu = document.querySelector(".menu") as HTMLElement;
+  const menuButton = menu?.querySelector("button") as HTMLButtonElement;
+  const closeButton = nav?.querySelector(".close button") as HTMLButtonElement;
 
-  menuButton?.addEventListener("click", () => {
+  function openMenu() {
     nav?.classList.add("nav-active");
     document.body.classList.add("nav-active");
-  });
+    menuButton.setAttribute("aria-expanded", "true");
+    nav?.setAttribute("aria-hidden", "false");
+  }
 
-  closeButton?.addEventListener("click", () => {
+  function closeMenu() {
     nav?.classList.remove("nav-active");
     document.body.classList.remove("nav-active");
+    menuButton.setAttribute("aria-expanded", "false");
+    nav?.setAttribute("aria-hidden", "true");
+  }
+
+  menuButton?.addEventListener("click", openMenu);
+  closeButton?.addEventListener("click", closeMenu);
+
+  // Close menu when clicking on a link
+  nav?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", closeMenu);
+  });
+
+  // Close menu on Escape key
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && nav?.classList.contains("nav-active")) {
+      closeMenu();
+    }
   });
 </script>

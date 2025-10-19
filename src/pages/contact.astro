@@ -242,8 +242,8 @@ const meta = {
 <script is:inline src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
 ></script>
 <script>
-  import { getReCaptchaToken } from "@/scripts/recaptcha";
   import { CONTACT_ENDPOINT } from "@/consts";
+  import { getReCaptchaToken, ReCaptchaError } from "@/scripts/recaptcha";
 
   type FromSubmissionSuccessResponse = {
     result: "done";
@@ -285,9 +285,22 @@ const meta = {
     try {
       const formData = new FormData(form);
       const postData = Object.fromEntries(formData.entries()) as PostData;
-
       postData.type = "000000";
-      postData.recaptchaToken = await getReCaptchaToken();
+
+      let recaptchaToken = "";
+
+      try {
+        recaptchaToken = await getReCaptchaToken();
+      } catch (recaptchaError) {
+        if (recaptchaError instanceof ReCaptchaError) {
+          console.error("reCAPTCHA error:", recaptchaError.message);
+        } else {
+          console.error("Unexpected reCAPTCHA error:", recaptchaError);
+        }
+        throw new Error("Failed to verify security. Please try again.");
+      }
+
+      postData.recaptchaToken = recaptchaToken;
 
       const response = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
