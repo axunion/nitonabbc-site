@@ -15,7 +15,7 @@ export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
       b.data.date.valueOf() - a.data.date.valueOf(),
   );
 
-  return paginate(posts, { pageSize: 5 });
+  return paginate(posts, { pageSize: 3 });
 }
 
 const { page } = Astro.props;
@@ -81,7 +81,7 @@ const meta = {
 
   .li {
     border-top: var(--color-subtext) dotted 1px;
-    padding: 2em 0;
+    padding: 3em 0;
   }
 
   .h3 {
@@ -97,8 +97,9 @@ const meta = {
 
   .pagination {
     display: flex;
-    padding: 0 0 10vh;
-    justify-content: space-between;
+    gap: 40px;
+    justify-content: center;
+    margin: 10vh 0;
   }
 
   .link {
@@ -112,6 +113,6 @@ const meta = {
   }
 
   .hidden {
-    visibility: hidden;
+    display: none;
   }
 </style>
