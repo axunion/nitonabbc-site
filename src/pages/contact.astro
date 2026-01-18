@@ -17,9 +17,9 @@ const meta = {
 <Layout {...meta}>
   <div
     class="container"
-    x-data="{ status: '', inquiry: '教会の場所や駐車場について', reply: 'メール' }"
+    x-data="{ status: '', errorType: '', inquiry: '教会の場所や駐車場について', reply: 'メール' }"
     @done="status = 'done';"
-    @error="status = 'error';"
+    @error="status = 'error'; errorType = $event.detail?.errorType || 'unknown';"
   >
     <section
       class="block"
@@ -143,7 +143,10 @@ const meta = {
             <Icon name="line-md:alert-circle" />
             <span>送信に失敗しました</span>
           </h3>
-          <p>恐れ入りますが、しばらく時間をおいて再度お試しください。</p>
+          <p x-show="errorType === 'recaptcha'">セキュリティ認証に失敗しました。ページを再読み込みしてお試しください。</p>
+          <p x-show="errorType === 'network'">ネットワーク接続を確認してください。</p>
+          <p x-show="errorType === 'server'">サーバーエラーが発生しました。しばらく時間をおいてお試しください。</p>
+          <p x-show="errorType === 'unknown'">恐れ入りますが、しばらく時間をおいて再度お試しください。</p>
         </div>
       </section>
     </template>
@@ -239,7 +242,11 @@ const meta = {
   is:inline
   src="https://www.google.com/recaptcha/api.js?render=6LemGUgpAAAAAHNy3XuUPkWhP2KZXkp1EfmC5lDh"
 ></script>
-<script is:inline src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"
+  integrity="sha256-tgDjY9mdlURNtUrL+y3v/smueSqpmgkim82geOW1VkM="
+  crossorigin="anonymous"
 ></script>
 <script>
   import { CONTACT_ENDPOINT } from "@/consts";
@@ -268,12 +275,16 @@ const meta = {
     name: string;
   };
 
+  type ErrorType = "recaptcha" | "network" | "server" | "unknown";
+
   const container = document.querySelector(".container") as HTMLDivElement;
   const form = document.querySelector(".form") as HTMLFormElement;
 
-  const handleFormResult = (resultType: string) => {
+  const handleFormResult = (resultType: string, errorType?: ErrorType) => {
     setTimeout(() => {
-      container.dispatchEvent(new CustomEvent(resultType));
+      container.dispatchEvent(
+        new CustomEvent(resultType, { detail: { errorType } }),
+      );
       window.scrollTo(0, 0);
     }, 100);
   };
@@ -281,6 +292,8 @@ const meta = {
   form.addEventListener("submit", async (event: Event) => {
     event.preventDefault();
     document.body.style.overflow = "hidden";
+
+    let errorType: ErrorType = "unknown";
 
     try {
       const formData = new FormData(form);
@@ -297,17 +310,25 @@ const meta = {
         } else {
           console.error("Unexpected reCAPTCHA error:", recaptchaError);
         }
+        errorType = "recaptcha";
         throw new Error("Failed to verify security. Please try again.");
       }
 
       postData.recaptchaToken = recaptchaToken;
 
-      const response = await fetch(CONTACT_ENDPOINT, {
-        method: "POST",
-        body: JSON.stringify(postData),
-      });
+      let response: Response;
+      try {
+        response = await fetch(CONTACT_ENDPOINT, {
+          method: "POST",
+          body: JSON.stringify(postData),
+        });
+      } catch {
+        errorType = "network";
+        throw new Error("Network error occurred");
+      }
 
       if (!response.ok) {
+        errorType = "server";
         throw new Error("Form submission failed");
       }
 
@@ -316,7 +337,7 @@ const meta = {
       handleFormResult(responseData.result);
     } catch (error) {
       console.error(error);
-      handleFormResult("error");
+      handleFormResult("error", errorType);
     } finally {
       document.body.style.overflow = "";
     }

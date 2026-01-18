@@ -185,37 +185,48 @@ import Button from "@/components/Button.astro";
 </style>
 
 <script>
-  const nav = document.querySelector(".nav") as HTMLElement;
-  const menu = document.querySelector(".menu") as HTMLElement;
-  const menuButton = menu?.querySelector("button") as HTMLButtonElement;
-  const closeButton = nav?.querySelector(".close button") as HTMLButtonElement;
+  (() => {
+    const nav = document.querySelector(".nav");
+    const menu = document.querySelector(".menu");
+    const menuButton = menu?.querySelector("button");
+    const closeButton = nav?.querySelector(".close button");
 
-  function openMenu() {
-    nav?.classList.add("nav-active");
-    document.body.classList.add("nav-active");
-    menuButton.setAttribute("aria-expanded", "true");
-    nav?.setAttribute("aria-hidden", "false");
-  }
-
-  function closeMenu() {
-    nav?.classList.remove("nav-active");
-    document.body.classList.remove("nav-active");
-    menuButton.setAttribute("aria-expanded", "false");
-    nav?.setAttribute("aria-hidden", "true");
-  }
-
-  menuButton?.addEventListener("click", openMenu);
-  closeButton?.addEventListener("click", closeMenu);
-
-  // Close menu when clicking on a link
-  nav?.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
-  });
-
-  // Close menu on Escape key
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape" && nav?.classList.contains("nav-active")) {
-      closeMenu();
+    if (!nav || !menu || !menuButton || !closeButton) {
+      console.error("Navigation elements not found");
+      return;
     }
-  });
+
+    const navElement = nav as HTMLElement;
+    const menuButtonElement = menuButton as HTMLButtonElement;
+    const closeButtonElement = closeButton as HTMLButtonElement;
+
+    function openMenu() {
+      navElement.classList.add("nav-active");
+      document.body.classList.add("nav-active");
+      menuButtonElement.setAttribute("aria-expanded", "true");
+      navElement.setAttribute("aria-hidden", "false");
+    }
+
+    function closeMenu() {
+      navElement.classList.remove("nav-active");
+      document.body.classList.remove("nav-active");
+      menuButtonElement.setAttribute("aria-expanded", "false");
+      navElement.setAttribute("aria-hidden", "true");
+    }
+
+    menuButtonElement.addEventListener("click", openMenu);
+    closeButtonElement.addEventListener("click", closeMenu);
+
+    // Close menu when clicking on a link
+    navElement.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", closeMenu);
+    });
+
+    // Close menu on Escape key
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && navElement.classList.contains("nav-active")) {
+        closeMenu();
+      }
+    });
+  })();
 </script>

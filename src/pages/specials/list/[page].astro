@@ -63,8 +63,8 @@ const meta = {
     </ul>
 
     <div class="pagination">
-      <a href={prevUrl} class:list={["link", { hidden: !prevUrl }]}> ← </a>
-      <a href={nextUrl} class:list={["link", { hidden: !nextUrl }]}> → </a>
+      <a href={prevUrl} class:list={["link", { hidden: !prevUrl }]} aria-label="前のページ" rel="prev"> ← </a>
+      <a href={nextUrl} class:list={["link", { hidden: !nextUrl }]} aria-label="次のページ" rel="next"> → </a>
     </div>
   </section>
 </Layout>
