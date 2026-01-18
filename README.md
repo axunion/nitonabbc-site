@@ -26,16 +26,22 @@ Astroの[コンテンツコレクション](https://docs.astro.build/ja/guides/c
 
 例: `src/content/specials/` 以下に年度・イベントごとのディレクトリがあり、各イベントの詳細や画像が格納されています。
 
+### 記事の追加方法
+
+1. `src/content/specials/_template/` を `src/content/specials/{YYYY}/{event-slug}/` にコピー
+2. `index.md` のfrontmatterを編集
+3. カバー画像（`brochure.webp`）を配置
+
 ## Commands
 
 主なコマンド一覧です。
 
 | コマンド              | 説明                         |
 |----------------------|------------------------------|
-| npm install          | 依存パッケージのインストール |
-| npm run dev          | 開発サーバーの起動           |
-| npm run build        | 本番用ビルド                  |
-| npm run preview      | ビルドのローカルプレビュー   |
+| pnpm install         | 依存パッケージのインストール |
+| pnpm dev             | 開発サーバーの起動           |
+| pnpm build           | 本番用ビルド                  |
+| pnpm preview         | ビルドのローカルプレビュー   |
 
 ## Dependencies
 
