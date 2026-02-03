@@ -54,7 +54,9 @@ export async function getReCaptchaToken(action = "submit"): Promise<string> {
         })
         .catch((error: unknown) => {
           const err = error instanceof Error ? error : new Error(String(error));
-          reject(new ReCaptchaError(`reCAPTCHA execution failed: ${err.message}`));
+          reject(
+            new ReCaptchaError(`reCAPTCHA execution failed: ${err.message}`),
+          );
         });
     });
   });
