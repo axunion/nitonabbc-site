@@ -13,9 +13,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-pnpm dev       # 開発サーバー起動
-pnpm build     # 型チェック + 本番ビルド
-pnpm preview   # ビルド結果のプレビュー
+pnpm dev          # 開発サーバー起動
+pnpm build        # 型チェック + 本番ビルド
+pnpm preview      # ビルド結果のプレビュー
+pnpm check        # biome lint/format チェック
+pnpm check:write  # biome lint/format 自動修正
 ```
 
 ## Architecture
@@ -38,7 +40,7 @@ tags: ["2025"]
 cover: "./brochure.webp"
 ```
 
-新規記事は `src/content/specials/_template/` をコピーして作成。
+新規記事は `/create-event {年} {スラグ}` スキルで作成。
 
 ### Theming System
 
